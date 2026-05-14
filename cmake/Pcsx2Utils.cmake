@@ -63,3 +63,24 @@ endmacro()
 macro(setup_main_executable target)
     # No-op: main executable setup is done inline in top-level CMakeLists.txt for iOS
 endmacro()
+
+# force_include_last — forces a header to be included last in all source files
+# Used by pcsx2/CMakeLists.txt for precompiled header injection.
+# On iOS/Xcode the PCH is handled automatically; this is a no-op.
+function(force_include_last target header)
+    # No-op for iOS/Xcode builds — Xcode manages PCH automatically.
+    # On other platforms this would be: target_compile_options(${target} PRIVATE -include "${header}")
+endfunction()
+
+# target_sources_conditional — adds sources conditionally based on a flag
+# Some PCSX2 CMakeLists.txt versions use this helper.
+macro(target_sources_conditional target flag)
+    if(${flag})
+        target_sources(${target} PRIVATE ${ARGN})
+    endif()
+endmacro()
+
+# pcsx2_target_compile_options — wrapper used by some PCSX2 cmake files
+function(pcsx2_target_compile_options target)
+    target_compile_options(${target} PRIVATE ${ARGN})
+endfunction()
