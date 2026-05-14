@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build iPSX2 (iOS arm64)
-    runs-on: macos-15 # Apple Silicon M2 — Xcode 16, Swift 6 ✓
+    runs-on: macos-14 # Apple Silicon — stable Xcode/SDK set
     timeout-minutes: 90 # Sécurité : 1h30 max
 
     steps:
