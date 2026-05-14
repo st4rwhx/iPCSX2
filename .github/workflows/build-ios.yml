@@ -49,11 +49,19 @@ jobs:
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCMAKE_OSX_DEPLOYMENT_TARGET=18.0 \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            "$GITHUB_WORKSPACE/src/cpp"
+            "$GITHUB_WORKSPACE/src/cpp" 2>&1 | tee cmake_output.txt
+          # Extraire erreurs et les mettre dans le Summary public
+          echo '## CMake Output' >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          grep -E '(Error|error|Warning|CMake Error|failed|FAILED)' cmake_output.txt | tail -50 >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          # Echouer si cmake a échoué
+          grep -q 'Configuring incomplete\|Error\|error' cmake_output.txt && exit 1 || exit 0
 
       # ── 6. Compiler avec xcodebuild ─────────────────────────────────────────
       - name: Build (xcodebuild)
         run: |
+          set -o pipefail
           xcodebuild \
             -project "$GITHUB_WORKSPACE/build/iPSX2.xcodeproj" \
             -scheme iPSX2 \
@@ -66,6 +74,11 @@ jobs:
             DEVELOPMENT_TEAM="" \
             PROVISIONING_PROFILE="" \
             2>&1 | tee build.log
+          # Résumé des erreurs de build dans le Summary public
+          echo '## Build Output (errors)' >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          grep -E '(error:|Error:|FAILED|BUILD FAILED)' build.log | tail -80 >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
           # Vérifier que le .app a bien été produit
           find "$GITHUB_WORKSPACE/build" -name "iPSX2.app" -type d | head -3
 
