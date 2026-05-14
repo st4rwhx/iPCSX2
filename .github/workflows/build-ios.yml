@@ -49,6 +49,8 @@ jobs:
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCMAKE_OSX_DEPLOYMENT_TARGET=18.0 \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DCMAKE_CXX_STANDARD=17 \
+            -DCMAKE_CXX_STANDARD_REQUIRED=ON \
             "$GITHUB_WORKSPACE/src/cpp" 2>&1 | tee cmake_output.txt
           # Extraire erreurs et les mettre dans le Summary public
           echo '## CMake Output' >> $GITHUB_STEP_SUMMARY
