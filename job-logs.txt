@@ -1,0 +1,937 @@
+﻿2026-05-14T02:47:29.5249080Z Current runner version: '2.334.0'
+2026-05-14T02:47:29.5264090Z ##[group]Runner Image Provisioner
+2026-05-14T02:47:29.5264650Z Hosted Compute Agent
+2026-05-14T02:47:29.5265030Z Version: 20260422.526
+2026-05-14T02:47:29.5265610Z Commit: e1a9e573f4d0838b3a7c1b07401aeb29ed3635a9
+2026-05-14T02:47:29.5266080Z Build Date: 2026-04-22T09:31:31Z
+2026-05-14T02:47:29.5266540Z Worker ID: {5a0d2f59-6700-4a11-a0a2-fa70fd2d2b99}
+2026-05-14T02:47:29.5267000Z Azure Region: westus
+2026-05-14T02:47:29.5267350Z ##[endgroup]
+2026-05-14T02:47:29.5268220Z ##[group]Operating System
+2026-05-14T02:47:29.5268680Z macOS
+2026-05-14T02:47:29.5268990Z 15.7.4
+2026-05-14T02:47:29.5269310Z 24G517
+2026-05-14T02:47:29.5269620Z ##[endgroup]
+2026-05-14T02:47:29.5269940Z ##[group]Runner Image
+2026-05-14T02:47:29.5270290Z Image: macos-15-arm64
+2026-05-14T02:47:29.5270630Z Version: 20260427.0018.1
+2026-05-14T02:47:29.5271440Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260427.0018/images/macos/macos-15-arm64-Readme.md
+2026-05-14T02:47:29.5272480Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260427.0018
+2026-05-14T02:47:29.5273100Z ##[endgroup]
+2026-05-14T02:47:29.5273850Z ##[group]GITHUB_TOKEN Permissions
+2026-05-14T02:47:29.5274960Z Contents: read
+2026-05-14T02:47:29.5275310Z Metadata: read
+2026-05-14T02:47:29.5275630Z Packages: read
+2026-05-14T02:47:29.5276000Z ##[endgroup]
+2026-05-14T02:47:29.5277720Z Secret source: Actions
+2026-05-14T02:47:29.5278130Z Prepare workflow directory
+2026-05-14T02:47:29.5528500Z Prepare all required actions
+2026-05-14T02:47:29.5557640Z Getting action download info
+2026-05-14T02:47:30.0243490Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-14T02:47:30.2175210Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-05-14T02:47:30.3166110Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-05-14T02:47:30.4862460Z Complete job name: Build iPSX2 (iOS arm64)
+2026-05-14T02:47:30.5269850Z ##[group]Run actions/checkout@v4
+2026-05-14T02:47:30.5270340Z with:
+2026-05-14T02:47:30.5270620Z   fetch-depth: 1
+2026-05-14T02:47:30.5270910Z   repository: st4rwhx/iPCSX2
+2026-05-14T02:47:30.5271390Z   token: ***
+2026-05-14T02:47:30.5271660Z   ssh-strict: true
+2026-05-14T02:47:30.5271950Z   ssh-user: git
+2026-05-14T02:47:30.5272230Z   persist-credentials: true
+2026-05-14T02:47:30.5272550Z   clean: true
+2026-05-14T02:47:30.5272840Z   sparse-checkout-cone-mode: true
+2026-05-14T02:47:30.5273170Z   fetch-tags: false
+2026-05-14T02:47:30.5273460Z   show-progress: true
+2026-05-14T02:47:30.5273740Z   lfs: false
+2026-05-14T02:47:30.5274010Z   submodules: false
+2026-05-14T02:47:30.5274290Z   set-safe-directory: true
+2026-05-14T02:47:30.5274700Z ##[endgroup]
+2026-05-14T02:47:30.9289810Z Syncing repository: st4rwhx/iPCSX2
+2026-05-14T02:47:30.9291390Z ##[group]Getting Git version info
+2026-05-14T02:47:30.9292140Z Working directory is '/Users/runner/work/iPCSX2/iPCSX2'
+2026-05-14T02:47:30.9298730Z [command]/opt/homebrew/bin/git version
+2026-05-14T02:47:30.9825930Z git version 2.54.0
+2026-05-14T02:47:30.9854150Z ##[endgroup]
+2026-05-14T02:47:30.9881480Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/f38b4d0d-9f7b-4e5a-b47d-aab121088daa/.gitconfig'
+2026-05-14T02:47:30.9882610Z Temporarily overriding HOME='/Users/runner/work/_temp/f38b4d0d-9f7b-4e5a-b47d-aab121088daa' before making global git config changes
+2026-05-14T02:47:30.9883570Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-14T02:47:30.9884400Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/iPCSX2/iPCSX2
+2026-05-14T02:47:30.9973240Z Deleting the contents of '/Users/runner/work/iPCSX2/iPCSX2'
+2026-05-14T02:47:30.9975460Z ##[group]Initializing the repository
+2026-05-14T02:47:30.9979510Z [command]/opt/homebrew/bin/git init /Users/runner/work/iPCSX2/iPCSX2
+2026-05-14T02:47:31.0195550Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-14T02:47:31.0199490Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-14T02:47:31.0200360Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-14T02:47:31.0200880Z hint: call:
+2026-05-14T02:47:31.0201170Z hint:
+2026-05-14T02:47:31.0201550Z hint: 	git config --global init.defaultBranch <name>
+2026-05-14T02:47:31.0201990Z hint:
+2026-05-14T02:47:31.0202390Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-14T02:47:31.0203010Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-14T02:47:31.0203510Z hint:
+2026-05-14T02:47:31.0203800Z hint: 	git branch -m <name>
+2026-05-14T02:47:31.0204120Z hint:
+2026-05-14T02:47:31.0204580Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-14T02:47:31.0205300Z Initialized empty Git repository in /Users/runner/work/iPCSX2/iPCSX2/.git/
+2026-05-14T02:47:31.0206730Z [command]/opt/homebrew/bin/git remote add origin https://github.com/st4rwhx/iPCSX2
+2026-05-14T02:47:31.0277950Z ##[endgroup]
+2026-05-14T02:47:31.0278660Z ##[group]Disabling automatic garbage collection
+2026-05-14T02:47:31.0279610Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-05-14T02:47:31.0399970Z ##[endgroup]
+2026-05-14T02:47:31.0400510Z ##[group]Setting up auth
+2026-05-14T02:47:31.0405770Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-14T02:47:31.0471730Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-14T02:47:31.1546460Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-14T02:47:31.1599090Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-14T02:47:31.2296900Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-14T02:47:31.2361390Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-14T02:47:31.3140970Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-14T02:47:31.3197590Z ##[endgroup]
+2026-05-14T02:47:31.3198150Z ##[group]Fetching the repository
+2026-05-14T02:47:31.3202200Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4dc37278c0eec6ac9a8d3aeceb1bb8f63e0dea66:refs/remotes/origin/main
+2026-05-14T02:47:34.0836900Z From https://github.com/st4rwhx/iPCSX2
+2026-05-14T02:47:34.0837650Z  * [new ref]         4dc37278c0eec6ac9a8d3aeceb1bb8f63e0dea66 -> origin/main
+2026-05-14T02:47:34.0932410Z ##[endgroup]
+2026-05-14T02:47:34.0933720Z ##[group]Determining the checkout info
+2026-05-14T02:47:34.0934840Z ##[endgroup]
+2026-05-14T02:47:34.0936290Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-05-14T02:47:34.1009770Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-14T02:47:34.1084970Z ##[group]Checking out the ref
+2026-05-14T02:47:34.1087020Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-14T02:47:35.2218470Z Updating files:  51% (6483/12656)
+2026-05-14T02:47:35.2500190Z Updating files:  52% (6582/12656)
+2026-05-14T02:47:35.2675380Z Updating files:  53% (6708/12656)
+2026-05-14T02:47:35.2948690Z Updating files:  54% (6835/12656)
+2026-05-14T02:47:35.3342070Z Updating files:  55% (6961/12656)
+2026-05-14T02:47:35.3567060Z Updating files:  56% (7088/12656)
+2026-05-14T02:47:35.3677020Z Updating files:  57% (7214/12656)
+2026-05-14T02:47:35.3804510Z Updating files:  58% (7341/12656)
+2026-05-14T02:47:35.3918500Z Updating files:  59% (7468/12656)
+2026-05-14T02:47:35.4094190Z Updating files:  60% (7594/12656)
+2026-05-14T02:47:35.4269190Z Updating files:  61% (7721/12656)
+2026-05-14T02:47:35.4373800Z Updating files:  62% (7847/12656)
+2026-05-14T02:47:35.4558080Z Updating files:  63% (7974/12656)
+2026-05-14T02:47:35.4684760Z Updating files:  64% (8100/12656)
+2026-05-14T02:47:35.4800160Z Updating files:  65% (8227/12656)
+2026-05-14T02:47:35.4962310Z Updating files:  66% (8353/12656)
+2026-05-14T02:47:35.5080820Z Updating files:  67% (8480/12656)
+2026-05-14T02:47:35.5226610Z Updating files:  68% (8607/12656)
+2026-05-14T02:47:35.5449860Z Updating files:  69% (8733/12656)
+2026-05-14T02:47:35.5560200Z Updating files:  70% (8860/12656)
+2026-05-14T02:47:35.6143130Z Updating files:  71% (8986/12656)
+2026-05-14T02:47:35.8016070Z Updating files:  72% (9113/12656)
+2026-05-14T02:47:35.8111400Z Updating files:  73% (9239/12656)
+2026-05-14T02:47:35.8448720Z Updating files:  74% (9366/12656)
+2026-05-14T02:47:35.8685340Z Updating files:  75% (9492/12656)
+2026-05-14T02:47:35.8811250Z Updating files:  76% (9619/12656)
+2026-05-14T02:47:35.8983440Z Updating files:  77% (9746/12656)
+2026-05-14T02:47:35.9101210Z Updating files:  78% (9872/12656)
+2026-05-14T02:47:35.9238210Z Updating files:  79% (9999/12656)
+2026-05-14T02:47:35.9367090Z Updating files:  80% (10125/12656)
+2026-05-14T02:47:35.9471560Z Updating files:  81% (10252/12656)
+2026-05-14T02:47:35.9715100Z Updating files:  82% (10378/12656)
+2026-05-14T02:47:35.9860230Z Updating files:  83% (10505/12656)
+2026-05-14T02:47:35.9986060Z Updating files:  84% (10632/12656)
+2026-05-14T02:47:36.0824530Z Updating files:  85% (10758/12656)
+2026-05-14T02:47:36.1048710Z Updating files:  86% (10885/12656)
+2026-05-14T02:47:36.1268340Z Updating files:  87% (11011/12656)
+2026-05-14T02:47:36.1306160Z Updating files:  88% (11138/12656)
+2026-05-14T02:47:36.1448220Z Updating files:  88% (11178/12656)
+2026-05-14T02:47:36.1659970Z Updating files:  89% (11264/12656)
+2026-05-14T02:47:36.1791180Z Updating files:  90% (11391/12656)
+2026-05-14T02:47:36.1993130Z Updating files:  91% (11517/12656)
+2026-05-14T02:47:36.2323030Z Updating files:  92% (11644/12656)
+2026-05-14T02:47:36.2450120Z Updating files:  93% (11771/12656)
+2026-05-14T02:47:36.2603780Z Updating files:  94% (11897/12656)
+2026-05-14T02:47:36.2793620Z Updating files:  95% (12024/12656)
+2026-05-14T02:47:36.2943790Z Updating files:  96% (12150/12656)
+2026-05-14T02:47:36.3139560Z Updating files:  97% (12277/12656)
+2026-05-14T02:47:36.3294280Z Updating files:  98% (12403/12656)
+2026-05-14T02:47:36.3453910Z Updating files:  99% (12530/12656)
+2026-05-14T02:47:36.3455570Z Updating files: 100% (12656/12656)
+2026-05-14T02:47:36.3455970Z Updating files: 100% (12656/12656), done.
+2026-05-14T02:47:36.3613990Z Switched to a new branch 'main'
+2026-05-14T02:47:36.3662960Z branch 'main' set up to track 'origin/main'.
+2026-05-14T02:47:36.3680410Z ##[endgroup]
+2026-05-14T02:47:36.3830130Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-05-14T02:47:36.3939460Z 4dc37278c0eec6ac9a8d3aeceb1bb8f63e0dea66
+2026-05-14T02:47:36.4195100Z ##[group]Run sudo xcode-select -s /Applications/Xcode_16.2.app
+2026-05-14T02:47:36.4195550Z [36;1msudo xcode-select -s /Applications/Xcode_16.2.app[0m
+2026-05-14T02:47:36.4195910Z [36;1mxcodebuild -version[0m
+2026-05-14T02:47:36.4196140Z [36;1mswift --version[0m
+2026-05-14T02:47:36.4246110Z shell: /bin/bash -e {0}
+2026-05-14T02:47:36.4246380Z ##[endgroup]
+2026-05-14T02:47:38.5682740Z Xcode 16.2
+2026-05-14T02:47:38.5684200Z Build version 16C5032a
+2026-05-14T02:47:40.9669400Z Apple Swift version 6.0.3 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+2026-05-14T02:47:40.9670350Z Target: arm64-apple-macosx15.0
+2026-05-14T02:47:40.9744830Z swift-driver version: 1.115.1 
+2026-05-14T02:47:40.9799600Z ##[group]Run brew install cmake ninja
+2026-05-14T02:47:40.9799940Z [36;1mbrew install cmake ninja[0m
+2026-05-14T02:47:40.9839130Z shell: /bin/bash -e {0}
+2026-05-14T02:47:40.9839480Z ##[endgroup]
+2026-05-14T02:47:43.0040250Z ✔︎ JSON API formula_tap_migrations.jws.json
+2026-05-14T02:47:43.0041720Z ✔︎ JSON API cask_tap_migrations.jws.json
+2026-05-14T02:47:43.9569190Z ##[warning]cmake 4.3.2 is already installed and up-to-date.
+To reinstall 4.3.2, run:
+  brew reinstall cmake
+
+2026-05-14T02:47:43.9584120Z ##[warning]ninja 1.13.2 is already installed and up-to-date.
+To reinstall 1.13.2, run:
+  brew reinstall ninja
+
+2026-05-14T02:47:44.1208280Z ##[group]Run actions/cache@v4
+2026-05-14T02:47:44.1208540Z with:
+2026-05-14T02:47:44.1208750Z   path: build
+2026-05-14T02:47:44.1209050Z   key: cmake-ios-db48af1a57a06d7c278826f69fdc3323cd8b5d0452b7345e3841491d215ae5c7
+2026-05-14T02:47:44.1209490Z   restore-keys: cmake-ios-
+2026-05-14T02:47:44.1209720Z   enableCrossOsArchive: false
+2026-05-14T02:47:44.1209950Z   fail-on-cache-miss: false
+2026-05-14T02:47:44.1210240Z   lookup-only: false
+2026-05-14T02:47:44.1210410Z   save-always: false
+2026-05-14T02:47:44.1210620Z ##[endgroup]
+2026-05-14T02:47:44.5535960Z Cache not found for input keys: cmake-ios-db48af1a57a06d7c278826f69fdc3323cd8b5d0452b7345e3841491d215ae5c7, cmake-ios-
+2026-05-14T02:47:44.5633830Z ##[group]Run cmake \
+2026-05-14T02:47:44.5634580Z [36;1mcmake \[0m
+2026-05-14T02:47:44.5635160Z [36;1m  -B "$GITHUB_WORKSPACE/build" \[0m
+2026-05-14T02:47:44.5635780Z [36;1m  -G Xcode \[0m
+2026-05-14T02:47:44.5636370Z [36;1m  -DCMAKE_SYSTEM_NAME=iOS \[0m
+2026-05-14T02:47:44.5637150Z [36;1m  -DiPSX2_REAL_DEVICE=ON \[0m
+2026-05-14T02:47:44.5637720Z [36;1m  -DCMAKE_OSX_ARCHITECTURES=arm64 \[0m
+2026-05-14T02:47:44.5638440Z [36;1m  -DCMAKE_OSX_DEPLOYMENT_TARGET=18.0 \[0m
+2026-05-14T02:47:44.5639230Z [36;1m  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \[0m
+2026-05-14T02:47:44.5640080Z [36;1m  "$GITHUB_WORKSPACE/src/cpp" 2>&1 | tee cmake_output.txt[0m
+2026-05-14T02:47:44.5641050Z [36;1m# Extraire erreurs et les mettre dans le Summary public[0m
+2026-05-14T02:47:44.5641910Z [36;1mecho '## CMake Output' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-14T02:47:44.5642770Z [36;1mecho '```' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-14T02:47:44.5644180Z [36;1mgrep -E '(Error|error|Warning|CMake Error|failed|FAILED)' cmake_output.txt | tail -50 >> $GITHUB_STEP_SUMMARY || true[0m
+2026-05-14T02:47:44.5645440Z [36;1mecho '```' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-14T02:47:44.5646210Z [36;1m# Echouer si cmake a échoué[0m
+2026-05-14T02:47:44.5647170Z [36;1mgrep -q 'Configuring incomplete\|Error\|error' cmake_output.txt && exit 1 || exit 0[0m
+2026-05-14T02:47:44.5701350Z shell: /bin/bash -e {0}
+2026-05-14T02:47:44.5701640Z ##[endgroup]
+2026-05-14T02:47:55.8798700Z -- The C compiler identification is AppleClang 16.0.0.16000026
+2026-05-14T02:47:58.4850330Z -- The CXX compiler identification is AppleClang 16.0.0.16000026
+2026-05-14T02:47:58.5032470Z -- Detecting C compiler ABI info
+2026-05-14T02:47:59.8855250Z -- Detecting C compiler ABI info - done
+2026-05-14T02:47:59.9104880Z -- Check for working C compiler: /Applications/Xcode_16.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang - skipped
+2026-05-14T02:47:59.9108810Z -- Detecting C compile features
+2026-05-14T02:47:59.9114470Z -- Detecting C compile features - done
+2026-05-14T02:47:59.9169330Z -- Detecting CXX compiler ABI info
+2026-05-14T02:48:01.4649580Z -- Detecting CXX compiler ABI info - done
+2026-05-14T02:48:01.5065950Z -- Check for working CXX compiler: /Applications/Xcode_16.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ - skipped
+2026-05-14T02:48:01.5079700Z -- Detecting CXX compile features
+2026-05-14T02:48:01.5086430Z -- Detecting CXX compile features - done
+2026-05-14T02:48:01.5422560Z -- Found PkgConfig: /opt/homebrew/bin/pkg-config (found version "2.5.1")
+2026-05-14T02:48:03.1923190Z -- The OBJC compiler identification is AppleClang 16.0.0.16000026
+2026-05-14T02:48:03.2024040Z -- Detecting OBJC compiler ABI info
+2026-05-14T02:48:04.8589450Z -- Detecting OBJC compiler ABI info - done
+2026-05-14T02:48:04.8892330Z -- Check for working OBJC compiler: /Applications/Xcode_16.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang - skipped
+2026-05-14T02:48:04.8995080Z -- Performing Test HAVE_GCC_WALL
+2026-05-14T02:48:06.3435450Z -- Performing Test HAVE_GCC_WALL - Success
+2026-05-14T02:48:06.3537640Z -- Performing Test HAVE_GCC_WUNDEF
+2026-05-14T02:48:07.8105960Z -- Performing Test HAVE_GCC_WUNDEF - Success
+2026-05-14T02:48:07.8129380Z -- Performing Test HAVE_GCC_WFLOAT_CONVERSION
+2026-05-14T02:48:09.1537460Z -- Performing Test HAVE_GCC_WFLOAT_CONVERSION - Success
+2026-05-14T02:48:09.1638550Z -- Performing Test HAVE_GCC_NO_STRICT_ALIASING
+2026-05-14T02:48:10.5327920Z -- Performing Test HAVE_GCC_NO_STRICT_ALIASING - Success
+2026-05-14T02:48:10.5331870Z -- Performing Test HAVE_GCC_WDOCUMENTATION
+2026-05-14T02:48:12.0061680Z -- Performing Test HAVE_GCC_WDOCUMENTATION - Success
+2026-05-14T02:48:12.0068780Z -- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND
+2026-05-14T02:48:13.5373950Z -- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND - Success
+2026-05-14T02:48:13.5377080Z -- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS
+2026-05-14T02:48:15.3193080Z -- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS - Success
+2026-05-14T02:48:15.3196710Z -- Performing Test HAVE_GCC_WSHADOW
+2026-05-14T02:48:16.6549030Z -- Performing Test HAVE_GCC_WSHADOW - Success
+2026-05-14T02:48:16.6553280Z -- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS
+2026-05-14T02:48:18.2890340Z -- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS - Success
+2026-05-14T02:48:18.2897960Z -- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH
+2026-05-14T02:48:19.7206870Z -- Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH - Success
+2026-05-14T02:48:19.7210830Z -- Performing Test COMPILER_SUPPORTS_FCOLOR_DIAGNOSTICS
+2026-05-14T02:48:21.1286460Z -- Performing Test COMPILER_SUPPORTS_FCOLOR_DIAGNOSTICS - Success
+2026-05-14T02:48:21.1287900Z -- Looking for __GLIBC__
+2026-05-14T02:48:22.4797310Z -- Looking for __GLIBC__ - not found
+2026-05-14T02:48:22.4808960Z -- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT
+2026-05-14T02:48:23.9986640Z -- Performing Test LINKER_SUPPORTS_VERSION_SCRIPT - Failed
+2026-05-14T02:48:23.9989210Z -- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS
+2026-05-14T02:48:25.4650850Z -- Performing Test COMPILER_SUPPORTS_GCC_ATOMICS - Success
+2026-05-14T02:48:25.4651670Z -- Performing Test HAVE_GCC_FVISIBILITY
+2026-05-14T02:48:26.9909550Z -- Performing Test HAVE_GCC_FVISIBILITY - Success
+2026-05-14T02:48:26.9912300Z -- Performing Test COMPILER_SUPPORTS_WNO_ERROR_DEPRECATED_DECLARATIONS
+2026-05-14T02:48:28.4563170Z -- Performing Test COMPILER_SUPPORTS_WNO_ERROR_DEPRECATED_DECLARATIONS - Success
+2026-05-14T02:48:28.4568040Z -- Performing Test LINKER_SUPPORTS_WL_UNDEFINED_ERROR
+2026-05-14T02:48:29.9788860Z -- Performing Test LINKER_SUPPORTS_WL_UNDEFINED_ERROR - Success
+2026-05-14T02:48:29.9795480Z -- Performing Test COMPILER_SUPPORTS_ARMNEON
+2026-05-14T02:48:32.0147750Z -- Performing Test COMPILER_SUPPORTS_ARMNEON - Success
+2026-05-14T02:48:32.0357880Z -- Looking for alloca.h
+2026-05-14T02:48:33.8903020Z -- Looking for alloca.h - found
+2026-05-14T02:48:33.8903720Z -- Looking for float.h
+2026-05-14T02:48:35.5148430Z -- Looking for float.h - found
+2026-05-14T02:48:35.5149550Z -- Looking for iconv.h
+2026-05-14T02:48:36.9738540Z -- Looking for iconv.h - found
+2026-05-14T02:48:36.9739100Z -- Looking for inttypes.h
+2026-05-14T02:48:38.4424560Z -- Looking for inttypes.h - found
+2026-05-14T02:48:38.4425220Z -- Looking for limits.h
+2026-05-14T02:48:39.8449400Z -- Looking for limits.h - found
+2026-05-14T02:48:39.8449830Z -- Looking for malloc.h
+2026-05-14T02:48:41.1112300Z -- Looking for malloc.h - not found
+2026-05-14T02:48:41.1113180Z -- Looking for math.h
+2026-05-14T02:48:42.3549840Z -- Looking for math.h - found
+2026-05-14T02:48:42.3553940Z -- Looking for memory.h
+2026-05-14T02:48:43.8094860Z -- Looking for memory.h - found
+2026-05-14T02:48:43.8095250Z -- Looking for signal.h
+2026-05-14T02:48:45.1684070Z -- Looking for signal.h - found
+2026-05-14T02:48:45.1684830Z -- Looking for stdarg.h
+2026-05-14T02:48:46.7583210Z -- Looking for stdarg.h - found
+2026-05-14T02:48:46.7584460Z -- Looking for stdbool.h
+2026-05-14T02:48:47.9530100Z -- Looking for stdbool.h - found
+2026-05-14T02:48:47.9530960Z -- Looking for stddef.h
+2026-05-14T02:48:49.3360890Z -- Looking for stddef.h - found
+2026-05-14T02:48:49.3361270Z -- Looking for stdint.h
+2026-05-14T02:48:51.1411500Z -- Looking for stdint.h - found
+2026-05-14T02:48:51.1411990Z -- Looking for stdio.h
+2026-05-14T02:48:52.7699090Z -- Looking for stdio.h - found
+2026-05-14T02:48:52.7702280Z -- Looking for stdlib.h
+2026-05-14T02:48:54.5112670Z -- Looking for stdlib.h - found
+2026-05-14T02:48:54.5113870Z -- Looking for string.h
+2026-05-14T02:48:56.2523430Z -- Looking for string.h - found
+2026-05-14T02:48:56.2524980Z -- Looking for strings.h
+2026-05-14T02:48:57.8669160Z -- Looking for strings.h - found
+2026-05-14T02:48:57.8669730Z -- Looking for sys/types.h
+2026-05-14T02:49:00.0316400Z -- Looking for sys/types.h - found
+2026-05-14T02:49:00.0317190Z -- Looking for time.h
+2026-05-14T02:49:01.9042040Z -- Looking for time.h - found
+2026-05-14T02:49:01.9042890Z -- Looking for wchar.h
+2026-05-14T02:49:04.1360110Z -- Looking for wchar.h - found
+2026-05-14T02:49:04.1362280Z -- Looking for pow in m
+2026-05-14T02:49:07.0200320Z -- Looking for pow in m - found
+2026-05-14T02:49:07.0202580Z -- Looking for abs
+2026-05-14T02:49:09.1880880Z -- Looking for abs - found
+2026-05-14T02:49:09.1881450Z -- Looking for acos
+2026-05-14T02:49:11.1325160Z -- Looking for acos - found
+2026-05-14T02:49:11.1427310Z -- Looking for acosf
+2026-05-14T02:49:13.2487710Z -- Looking for acosf - found
+2026-05-14T02:49:13.2490330Z -- Looking for asin
+2026-05-14T02:49:15.4651950Z -- Looking for asin - found
+2026-05-14T02:49:15.4757340Z -- Looking for asinf
+2026-05-14T02:49:17.5088260Z -- Looking for asinf - found
+2026-05-14T02:49:17.5094580Z -- Looking for atan
+2026-05-14T02:49:19.7298200Z -- Looking for atan - found
+2026-05-14T02:49:19.7399220Z -- Looking for atan2
+2026-05-14T02:49:21.8090450Z -- Looking for atan2 - found
+2026-05-14T02:49:21.8091610Z -- Looking for atan2f
+2026-05-14T02:49:23.6707430Z -- Looking for atan2f - found
+2026-05-14T02:49:23.6709140Z -- Looking for atanf
+2026-05-14T02:49:25.4666430Z -- Looking for atanf - found
+2026-05-14T02:49:25.4671230Z -- Looking for atof
+2026-05-14T02:49:27.0724290Z -- Looking for atof - found
+2026-05-14T02:49:27.0725700Z -- Looking for atoi
+2026-05-14T02:49:28.8970210Z -- Looking for atoi - found
+2026-05-14T02:49:28.8972000Z -- Looking for bcopy
+2026-05-14T02:49:30.5040750Z -- Looking for bcopy - found
+2026-05-14T02:49:30.5055230Z -- Looking for ceil
+2026-05-14T02:49:32.2072140Z -- Looking for ceil - found
+2026-05-14T02:49:32.2073180Z -- Looking for ceilf
+2026-05-14T02:49:33.8624300Z -- Looking for ceilf - found
+2026-05-14T02:49:33.8625250Z -- Looking for copysign
+2026-05-14T02:49:35.6070600Z -- Looking for copysign - found
+2026-05-14T02:49:35.6071510Z -- Looking for copysignf
+2026-05-14T02:49:37.3711670Z -- Looking for copysignf - found
+2026-05-14T02:49:37.3719060Z -- Looking for cos
+2026-05-14T02:49:39.1927460Z -- Looking for cos - found
+2026-05-14T02:49:39.1929820Z -- Looking for cosf
+2026-05-14T02:49:41.1164610Z -- Looking for cosf - found
+2026-05-14T02:49:41.1167680Z -- Looking for _Exit
+2026-05-14T02:49:42.6226080Z -- Looking for _Exit - found
+2026-05-14T02:49:42.6227190Z -- Looking for exp
+2026-05-14T02:49:44.4028320Z -- Looking for exp - found
+2026-05-14T02:49:44.4030640Z -- Looking for expf
+2026-05-14T02:49:46.1729600Z -- Looking for expf - found
+2026-05-14T02:49:46.1746470Z -- Looking for fabs
+2026-05-14T02:49:47.7127160Z -- Looking for fabs - found
+2026-05-14T02:49:47.7128830Z -- Looking for fabsf
+2026-05-14T02:49:50.1081260Z -- Looking for fabsf - found
+2026-05-14T02:49:50.1082110Z -- Looking for floor
+2026-05-14T02:49:52.6570000Z -- Looking for floor - found
+2026-05-14T02:49:52.6572020Z -- Looking for floorf
+2026-05-14T02:49:54.8207820Z -- Looking for floorf - found
+2026-05-14T02:49:54.8213090Z -- Looking for fmod
+2026-05-14T02:49:57.1114420Z -- Looking for fmod - found
+2026-05-14T02:49:57.1138930Z -- Looking for fmodf
+2026-05-14T02:49:58.8809610Z -- Looking for fmodf - found
+2026-05-14T02:49:58.8818590Z -- Looking for fopen64
+2026-05-14T02:50:00.7951070Z -- Looking for fopen64 - not found
+2026-05-14T02:50:00.7952120Z -- Looking for fseeko
+2026-05-14T02:50:02.4676890Z -- Looking for fseeko - found
+2026-05-14T02:50:02.4678800Z -- Looking for fseeko64
+2026-05-14T02:50:04.1753870Z -- Looking for fseeko64 - not found
+2026-05-14T02:50:04.1819240Z -- Looking for getenv
+2026-05-14T02:50:05.8096560Z -- Looking for getenv - found
+2026-05-14T02:50:05.8097380Z -- Looking for _i64toa
+2026-05-14T02:50:08.2185740Z -- Looking for _i64toa - not found
+2026-05-14T02:50:08.2192440Z -- Looking for index
+2026-05-14T02:50:10.5485930Z -- Looking for index - found
+2026-05-14T02:50:10.5490030Z -- Looking for itoa
+2026-05-14T02:50:12.7263850Z -- Looking for itoa - not found
+2026-05-14T02:50:12.7265370Z -- Looking for log
+2026-05-14T02:50:15.2068470Z -- Looking for log - found
+2026-05-14T02:50:15.2077350Z -- Looking for log10
+2026-05-14T02:50:17.0164930Z -- Looking for log10 - found
+2026-05-14T02:50:17.0174180Z -- Looking for log10f
+2026-05-14T02:50:18.8524840Z -- Looking for log10f - found
+2026-05-14T02:50:18.8525720Z -- Looking for logf
+2026-05-14T02:50:21.4846290Z -- Looking for logf - found
+2026-05-14T02:50:21.4846910Z -- Looking for lround
+2026-05-14T02:50:23.7377780Z -- Looking for lround - found
+2026-05-14T02:50:23.7379240Z -- Looking for lroundf
+2026-05-14T02:50:26.3887100Z -- Looking for lroundf - found
+2026-05-14T02:50:26.3993430Z -- Looking for _ltoa
+2026-05-14T02:50:29.0223670Z -- Looking for _ltoa - not found
+2026-05-14T02:50:29.0233400Z -- Looking for malloc
+2026-05-14T02:50:31.5210590Z -- Looking for malloc - found
+2026-05-14T02:50:31.5218780Z -- Looking for memcmp
+2026-05-14T02:50:33.9756500Z -- Looking for memcmp - found
+2026-05-14T02:50:33.9757660Z -- Looking for memcpy
+2026-05-14T02:50:36.2438030Z -- Looking for memcpy - found
+2026-05-14T02:50:36.2439240Z -- Looking for memmove
+2026-05-14T02:50:38.3307700Z -- Looking for memmove - found
+2026-05-14T02:50:38.3311240Z -- Looking for memset
+2026-05-14T02:50:41.9534430Z -- Looking for memset - found
+2026-05-14T02:50:41.9632000Z -- Looking for modf
+2026-05-14T02:50:44.5789980Z -- Looking for modf - found
+2026-05-14T02:50:44.5790990Z -- Looking for modff
+2026-05-14T02:50:47.2737400Z -- Looking for modff - found
+2026-05-14T02:50:47.2737810Z -- Looking for pow
+2026-05-14T02:50:49.4775590Z -- Looking for pow - found
+2026-05-14T02:50:49.4777620Z -- Looking for powf
+2026-05-14T02:50:51.3352630Z -- Looking for powf - found
+2026-05-14T02:50:51.3353830Z -- Looking for putenv
+2026-05-14T02:50:53.7825070Z -- Looking for putenv - found
+2026-05-14T02:50:53.7928490Z -- Looking for rindex
+2026-05-14T02:50:56.1840610Z -- Looking for rindex - found
+2026-05-14T02:50:56.1941030Z -- Looking for round
+2026-05-14T02:50:58.5604230Z -- Looking for round - found
+2026-05-14T02:50:58.5605020Z -- Looking for roundf
+2026-05-14T02:51:00.9421960Z -- Looking for roundf - found
+2026-05-14T02:51:00.9459390Z -- Looking for scalbn
+2026-05-14T02:51:03.1991930Z -- Looking for scalbn - found
+2026-05-14T02:51:03.1995260Z -- Looking for scalbnf
+2026-05-14T02:51:05.3607490Z -- Looking for scalbnf - found
+2026-05-14T02:51:05.3761350Z -- Looking for setenv
+2026-05-14T02:51:07.6799250Z -- Looking for setenv - found
+2026-05-14T02:51:07.6800020Z -- Looking for sin
+2026-05-14T02:51:10.0963990Z -- Looking for sin - found
+2026-05-14T02:51:10.0968800Z -- Looking for sinf
+2026-05-14T02:51:12.0832780Z -- Looking for sinf - found
+2026-05-14T02:51:12.0834060Z -- Looking for sqr
+2026-05-14T02:51:14.4053930Z -- Looking for sqr - not found
+2026-05-14T02:51:14.4059900Z -- Looking for sqrt
+2026-05-14T02:51:16.6981300Z -- Looking for sqrt - found
+2026-05-14T02:51:16.6982550Z -- Looking for sqrtf
+2026-05-14T02:51:18.7421190Z -- Looking for sqrtf - found
+2026-05-14T02:51:18.7422230Z -- Looking for sscanf
+2026-05-14T02:51:20.4248870Z -- Looking for sscanf - found
+2026-05-14T02:51:20.4249950Z -- Looking for strchr
+2026-05-14T02:51:22.4115940Z -- Looking for strchr - found
+2026-05-14T02:51:22.4117000Z -- Looking for strcmp
+2026-05-14T02:51:24.2702640Z -- Looking for strcmp - found
+2026-05-14T02:51:24.2716810Z -- Looking for strlcat
+2026-05-14T02:51:26.5818980Z -- Looking for strlcat - found
+2026-05-14T02:51:26.5819460Z -- Looking for strlcpy
+2026-05-14T02:51:29.2968180Z -- Looking for strlcpy - found
+2026-05-14T02:51:29.2968670Z -- Looking for strlen
+2026-05-14T02:51:31.7327060Z -- Looking for strlen - found
+2026-05-14T02:51:31.7328810Z -- Looking for strncmp
+2026-05-14T02:51:33.8176870Z -- Looking for strncmp - found
+2026-05-14T02:51:33.8215630Z -- Looking for strnlen
+2026-05-14T02:51:36.8630620Z -- Looking for strnlen - found
+2026-05-14T02:51:36.8631570Z -- Looking for strpbrk
+2026-05-14T02:51:38.8724060Z -- Looking for strpbrk - found
+2026-05-14T02:51:38.8842930Z -- Looking for strrchr
+2026-05-14T02:51:42.2162080Z -- Looking for strrchr - found
+2026-05-14T02:51:42.2162740Z -- Looking for strstr
+2026-05-14T02:51:44.7977630Z -- Looking for strstr - found
+2026-05-14T02:51:44.7981660Z -- Looking for strnstr
+2026-05-14T02:51:47.3833910Z -- Looking for strnstr - found
+2026-05-14T02:51:47.3839760Z -- Looking for strtod
+2026-05-14T02:51:50.0254890Z -- Looking for strtod - found
+2026-05-14T02:51:50.0356020Z -- Looking for strtok_r
+2026-05-14T02:51:52.3049420Z -- Looking for strtok_r - found
+2026-05-14T02:51:52.3050690Z -- Looking for strtol
+2026-05-14T02:51:55.2680170Z -- Looking for strtol - found
+2026-05-14T02:51:55.2680800Z -- Looking for strtoll
+2026-05-14T02:51:57.6407200Z -- Looking for strtoll - found
+2026-05-14T02:51:57.6408030Z -- Looking for strtoul
+2026-05-14T02:51:59.4022470Z -- Looking for strtoul - found
+2026-05-14T02:51:59.4022950Z -- Looking for strtoull
+2026-05-14T02:52:01.5755890Z -- Looking for strtoull - found
+2026-05-14T02:52:01.5758220Z -- Looking for tan
+2026-05-14T02:52:03.7231530Z -- Looking for tan - found
+2026-05-14T02:52:03.7238620Z -- Looking for tanf
+2026-05-14T02:52:06.1561890Z -- Looking for tanf - found
+2026-05-14T02:52:06.1563210Z -- Looking for trunc
+2026-05-14T02:52:08.0896140Z -- Looking for trunc - found
+2026-05-14T02:52:08.0966380Z -- Looking for truncf
+2026-05-14T02:52:10.2968450Z -- Looking for truncf - found
+2026-05-14T02:52:10.3069730Z -- Looking for unsetenv
+2026-05-14T02:52:13.0504170Z -- Looking for unsetenv - found
+2026-05-14T02:52:13.0505220Z -- Looking for vsnprintf
+2026-05-14T02:52:15.4732710Z -- Looking for vsnprintf - found
+2026-05-14T02:52:15.4733080Z -- Looking for vsscanf
+2026-05-14T02:52:17.7209190Z -- Looking for vsscanf - found
+2026-05-14T02:52:17.7210120Z -- Looking for wcsnlen
+2026-05-14T02:52:19.6236130Z -- Looking for wcsnlen - found
+2026-05-14T02:52:19.6236920Z -- Looking for wcscmp
+2026-05-14T02:52:21.6257800Z -- Looking for wcscmp - found
+2026-05-14T02:52:21.6302080Z -- Looking for wcsdup
+2026-05-14T02:52:23.8251000Z -- Looking for wcsdup - found
+2026-05-14T02:52:23.8254020Z -- Looking for wcslcat
+2026-05-14T02:52:26.5184070Z -- Looking for wcslcat - found
+2026-05-14T02:52:26.5184960Z -- Looking for wcslcpy
+2026-05-14T02:52:29.0141380Z -- Looking for wcslcpy - found
+2026-05-14T02:52:29.0155450Z -- Looking for wcslen
+2026-05-14T02:52:31.8625130Z -- Looking for wcslen - found
+2026-05-14T02:52:31.8625780Z -- Looking for wcsncmp
+2026-05-14T02:52:34.6594250Z -- Looking for wcsncmp - found
+2026-05-14T02:52:34.6595890Z -- Looking for wcsstr
+2026-05-14T02:52:37.3626060Z -- Looking for wcsstr - found
+2026-05-14T02:52:37.3627190Z -- Looking for wcstol
+2026-05-14T02:52:39.7751260Z -- Looking for wcstol - found
+2026-05-14T02:52:39.7752480Z -- Looking for strcasestr
+2026-05-14T02:52:41.8957460Z -- Looking for strcasestr - found
+2026-05-14T02:52:41.8965060Z -- Performing Test LIBC_HAS_ISINF
+2026-05-14T02:52:43.7857210Z -- Performing Test LIBC_HAS_ISINF - Success
+2026-05-14T02:52:43.7857600Z -- Performing Test LIBC_ISINF_HANDLES_FLOAT
+2026-05-14T02:52:45.5924000Z -- Performing Test LIBC_ISINF_HANDLES_FLOAT - Success
+2026-05-14T02:52:45.5924440Z -- Performing Test LIBC_HAS_ISINFF
+2026-05-14T02:52:47.4218890Z -- Performing Test LIBC_HAS_ISINFF - Failed
+2026-05-14T02:52:47.4220780Z -- Performing Test LIBC_HAS_ISNAN
+2026-05-14T02:52:49.3365250Z -- Performing Test LIBC_HAS_ISNAN - Success
+2026-05-14T02:52:49.3366540Z -- Performing Test LIBC_ISNAN_HANDLES_FLOAT
+2026-05-14T02:52:50.9452540Z -- Performing Test LIBC_ISNAN_HANDLES_FLOAT - Success
+2026-05-14T02:52:50.9453140Z -- Performing Test LIBC_HAS_ISNANF
+2026-05-14T02:52:52.8052340Z -- Performing Test LIBC_HAS_ISNANF - Failed
+2026-05-14T02:52:52.8062950Z -- Looking for fdatasync
+2026-05-14T02:52:54.6718100Z -- Looking for fdatasync - not found
+2026-05-14T02:52:54.6718930Z -- Looking for gethostname
+2026-05-14T02:52:56.5078710Z -- Looking for gethostname - found
+2026-05-14T02:52:56.5135480Z -- Looking for getpagesize
+2026-05-14T02:52:58.2722800Z -- Looking for getpagesize - found
+2026-05-14T02:52:58.2723590Z -- Looking for sigaction
+2026-05-14T02:53:00.6339270Z -- Looking for sigaction - found
+2026-05-14T02:53:00.6339630Z -- Looking for setjmp
+2026-05-14T02:53:02.4036310Z -- Looking for setjmp - found
+2026-05-14T02:53:02.4038860Z -- Looking for nanosleep
+2026-05-14T02:53:03.9161570Z -- Looking for nanosleep - found
+2026-05-14T02:53:03.9162090Z -- Looking for gmtime_r
+2026-05-14T02:53:06.0632290Z -- Looking for gmtime_r - found
+2026-05-14T02:53:06.0634300Z -- Looking for localtime_r
+2026-05-14T02:53:08.3243140Z -- Looking for localtime_r - found
+2026-05-14T02:53:08.3273220Z -- Looking for nl_langinfo
+2026-05-14T02:53:10.7074050Z -- Looking for nl_langinfo - found
+2026-05-14T02:53:10.7086730Z -- Looking for sysconf
+2026-05-14T02:53:14.0113110Z -- Looking for sysconf - found
+2026-05-14T02:53:14.0212450Z -- Looking for sysctlbyname
+2026-05-14T02:53:17.1361970Z -- Looking for sysctlbyname - found
+2026-05-14T02:53:17.1463260Z -- Looking for getauxval
+2026-05-14T02:53:20.2642480Z -- Looking for getauxval - not found
+2026-05-14T02:53:20.2644010Z -- Looking for elf_aux_info
+2026-05-14T02:53:22.8771120Z -- Looking for elf_aux_info - not found
+2026-05-14T02:53:22.8772220Z -- Looking for poll
+2026-05-14T02:53:25.8908910Z -- Looking for poll - found
+2026-05-14T02:53:25.9011030Z -- Looking for memfd_create
+2026-05-14T02:53:28.6668910Z -- Looking for memfd_create - not found
+2026-05-14T02:53:28.6669590Z -- Looking for posix_fallocate
+2026-05-14T02:53:31.6257390Z -- Looking for posix_fallocate - not found
+2026-05-14T02:53:31.6258530Z -- Looking for posix_spawn_file_actions_addchdir
+2026-05-14T02:53:34.2619210Z -- Looking for posix_spawn_file_actions_addchdir - not found
+2026-05-14T02:53:34.2622910Z -- Looking for posix_spawn_file_actions_addchdir_np
+2026-05-14T02:53:36.8683100Z -- Looking for posix_spawn_file_actions_addchdir_np - not found
+2026-05-14T02:53:36.8688080Z -- Performing Test HAVE_SA_SIGACTION
+2026-05-14T02:53:38.9050790Z -- Performing Test HAVE_SA_SIGACTION - Success
+2026-05-14T02:53:38.9052220Z -- Performing Test HAVE_ST_MTIM
+2026-05-14T02:53:40.6665540Z -- Performing Test HAVE_ST_MTIM - Failed
+2026-05-14T02:53:40.6793370Z -- Looking for dlopen
+2026-05-14T02:53:42.7859140Z -- Looking for dlopen - found
+2026-05-14T02:53:42.7961230Z -- Performing Test HAVE_O_CLOEXEC
+2026-05-14T02:53:45.5567420Z -- Performing Test HAVE_O_CLOEXEC - Success
+2026-05-14T02:53:45.5723920Z -- Checking for module 'libusb-1.0>=1.0.16'
+2026-05-14T02:53:45.5942110Z --   Found libusb-1.0, version 1.0.29
+2026-05-14T02:53:45.9345400Z -- Could NOT find LibUSB (missing: LibUSB_LIBRARY LibUSB_INCLUDE_PATH) (found version "LibUSB_VERSION-NOTFOUND")
+2026-05-14T02:53:45.9396430Z -- Performing Test HAVE_FRAMEWORK_METAL
+2026-05-14T02:53:49.2092790Z -- Performing Test HAVE_FRAMEWORK_METAL - Success
+2026-05-14T02:53:49.2193990Z -- Performing Test HAVE_PTHREADS
+2026-05-14T02:53:51.4142480Z -- Performing Test HAVE_PTHREADS - Success
+2026-05-14T02:53:51.4147780Z -- Performing Test HAVE_RECURSIVE_MUTEXES
+2026-05-14T02:53:53.6173890Z -- Performing Test HAVE_RECURSIVE_MUTEXES - Success
+2026-05-14T02:53:53.6174830Z -- Performing Test HAVE_PTHREADS_SEM
+2026-05-14T02:53:55.8112580Z -- Performing Test HAVE_PTHREADS_SEM - Success
+2026-05-14T02:53:55.8122750Z -- Performing Test COMPILER_HAS_SEM_TIMEDWAIT
+2026-05-14T02:53:58.1413380Z -- Performing Test COMPILER_HAS_SEM_TIMEDWAIT - Failed
+2026-05-14T02:53:58.1428430Z -- Looking for pthread.h
+2026-05-14T02:53:59.8818740Z -- Looking for pthread.h - found
+2026-05-14T02:53:59.8819870Z -- Looking for pthread_np.h
+2026-05-14T02:54:02.0242770Z -- Looking for pthread_np.h - not found
+2026-05-14T02:54:02.0343790Z -- Performing Test HAVE_PTHREAD_SETNAME_NP
+2026-05-14T02:54:03.9011310Z -- Performing Test HAVE_PTHREAD_SETNAME_NP - Success
+2026-05-14T02:54:03.9024070Z -- Performing Test HAVE_POSIX_SPAWN
+2026-05-14T02:54:06.2888150Z -- Performing Test HAVE_POSIX_SPAWN - Success
+2026-05-14T02:54:06.3674770Z -- Performing Test COMPILER_SUPPORTS_FOBJC_ARC
+2026-05-14T02:54:08.3849400Z -- Performing Test COMPILER_SUPPORTS_FOBJC_ARC - Success
+2026-05-14T02:54:08.3923270Z -- 
+2026-05-14T02:54:08.3923660Z -- SDL3 was configured with the following options:
+2026-05-14T02:54:08.3924130Z -- 
+2026-05-14T02:54:08.3924680Z -- Platform: iOS
+2026-05-14T02:54:08.3925100Z -- 64-bit:   TRUE
+2026-05-14T02:54:08.3930790Z -- Compiler: /Applications/Xcode_16.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+2026-05-14T02:54:08.3931440Z -- Revision: SDL3-3.3.0-HEAD-HASH-NOTFOUND
+2026-05-14T02:54:08.3931740Z -- Vendor:   
+2026-05-14T02:54:08.3931940Z -- 
+2026-05-14T02:54:08.3932180Z -- Subsystems:
+2026-05-14T02:54:08.3932410Z --   Audio:    ON
+2026-05-14T02:54:08.3932650Z --   Video:    ON
+2026-05-14T02:54:08.3932970Z --   GPU:      ON
+2026-05-14T02:54:08.3933200Z --   Render:   ON
+2026-05-14T02:54:08.3933380Z --   Camera:   ON
+2026-05-14T02:54:08.3933670Z --   Joystick: ON
+2026-05-14T02:54:08.3933960Z --   Haptic:   ON
+2026-05-14T02:54:08.3934140Z --   Hidapi:   ON
+2026-05-14T02:54:08.3934370Z --   Power:    ON
+2026-05-14T02:54:08.3934660Z --   Sensor:   ON
+2026-05-14T02:54:08.3953470Z --   Dialog:   ON
+2026-05-14T02:54:08.3953750Z -- 
+2026-05-14T02:54:08.3953940Z -- Options:
+2026-05-14T02:54:08.3954240Z --   SDL_ALSA                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3954540Z --   SDL_ALSA_SHARED             (Wanted: OFF): OFF
+2026-05-14T02:54:08.3954850Z --   SDL_ALTIVEC                 (Wanted: OFF): OFF
+2026-05-14T02:54:08.3955130Z --   SDL_ARMNEON                 (Wanted: ON): ON
+2026-05-14T02:54:08.3955470Z --   SDL_ASAN                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3955790Z --   SDL_ASSEMBLY                (Wanted: ON): ON
+2026-05-14T02:54:08.3956050Z --   SDL_ASSERTIONS              (Wanted: auto): auto
+2026-05-14T02:54:08.3956350Z --   SDL_AVX                     (Wanted: OFF): OFF
+2026-05-14T02:54:08.3956620Z --   SDL_AVX2                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3956940Z --   SDL_AVX512F                 (Wanted: OFF): OFF
+2026-05-14T02:54:08.3957200Z --   SDL_BACKGROUNDING_SIGNAL    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3957470Z --   SDL_CCACHE                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3957730Z --   SDL_CLANG_TIDY              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3958080Z --   SDL_CLOCK_GETTIME           (Wanted: OFF): OFF
+2026-05-14T02:54:08.3958350Z --   SDL_COCOA                   (Wanted: ON): OFF
+2026-05-14T02:54:08.3958600Z --   SDL_DBUS                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3958910Z --   SDL_DEPS_SHARED             (Wanted: ON): OFF
+2026-05-14T02:54:08.3959200Z --   SDL_DIRECTX                 (Wanted: OFF): OFF
+2026-05-14T02:54:08.3959460Z --   SDL_DISKAUDIO               (Wanted: ON): ON
+2026-05-14T02:54:08.3959720Z --   SDL_DUMMYAUDIO              (Wanted: ON): ON
+2026-05-14T02:54:08.3960070Z --   SDL_DUMMYCAMERA             (Wanted: ON): ON
+2026-05-14T02:54:08.3960340Z --   SDL_DUMMYVIDEO              (Wanted: ON): ON
+2026-05-14T02:54:08.3960600Z --   SDL_EXAMPLES                (Wanted: OFF): OFF
+2026-05-14T02:54:08.3960900Z --   SDL_EXAMPLES_LINK_SHARED    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3961170Z --   SDL_FOREGROUNDING_SIGNAL    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3961450Z --   SDL_GCC_ATOMICS             (Wanted: ON): ON
+2026-05-14T02:54:08.3964970Z --   SDL_GPU_DXVK                (Wanted: OFF): OFF
+2026-05-14T02:54:08.3965350Z --   SDL_HIDAPI                  (Wanted: ON): ON
+2026-05-14T02:54:08.3965640Z --   SDL_HIDAPI_JOYSTICK         (Wanted: ON): ON
+2026-05-14T02:54:08.3965960Z --   SDL_HIDAPI_LIBUSB           (Wanted: ON): OFF
+2026-05-14T02:54:08.3966230Z --   SDL_HIDAPI_LIBUSB_SHARED    (Wanted: ON): OFF
+2026-05-14T02:54:08.3966510Z --   SDL_IBUS                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3966860Z --   SDL_INSTALL                 (Wanted: OFF): OFF
+2026-05-14T02:54:08.3967180Z --   SDL_INSTALL_TESTS           (Wanted: OFF): OFF
+2026-05-14T02:54:08.3967480Z --   SDL_JACK                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3967740Z --   SDL_JACK_SHARED             (Wanted: OFF): OFF
+2026-05-14T02:54:08.3968030Z --   SDL_KMSDRM                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3968320Z --   SDL_KMSDRM_SHARED           (Wanted: OFF): OFF
+2026-05-14T02:54:08.3968570Z --   SDL_LASX                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3969050Z --   SDL_LIBC                    (Wanted: ON): ON
+2026-05-14T02:54:08.3969340Z --   SDL_LIBICONV                (Wanted: OFF): OFF
+2026-05-14T02:54:08.3969660Z --   SDL_LIBUDEV                 (Wanted: ON): OFF
+2026-05-14T02:54:08.3970480Z --   SDL_LIBURING                (Wanted: OFF): OFF
+2026-05-14T02:54:08.3970750Z --   SDL_LSX                     (Wanted: OFF): OFF
+2026-05-14T02:54:08.3971090Z --   SDL_METAL                   (Wanted: ON): ON
+2026-05-14T02:54:08.3971340Z --   SDL_MMX                     (Wanted: OFF): OFF
+2026-05-14T02:54:08.3971600Z --   SDL_OFFSCREEN               (Wanted: ON): ON
+2026-05-14T02:54:08.3971900Z --   SDL_OPENGL                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3972160Z --   SDL_OPENGLES                (Wanted: ON): ON
+2026-05-14T02:54:08.3972420Z --   SDL_OPENVR                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3972690Z --   SDL_OSS                     (Wanted: OFF): OFF
+2026-05-14T02:54:08.3973010Z --   SDL_PIPEWIRE                (Wanted: OFF): OFF
+2026-05-14T02:54:08.3973280Z --   SDL_PIPEWIRE_SHARED         (Wanted: OFF): OFF
+2026-05-14T02:54:08.3973540Z --   SDL_PTHREADS                (Wanted: ON): ON
+2026-05-14T02:54:08.3973800Z --   SDL_PTHREADS_SEM            (Wanted: ON): ON
+2026-05-14T02:54:08.3974170Z --   SDL_PULSEAUDIO              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3974580Z --   SDL_PULSEAUDIO_SHARED       (Wanted: OFF): OFF
+2026-05-14T02:54:08.3974860Z --   SDL_RENDER_D3D              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3975230Z --   SDL_RENDER_D3D11            (Wanted: OFF): OFF
+2026-05-14T02:54:08.3975490Z --   SDL_RENDER_D3D12            (Wanted: OFF): OFF
+2026-05-14T02:54:08.3975750Z --   SDL_RENDER_GPU              (Wanted: ON): ON
+2026-05-14T02:54:08.3976030Z --   SDL_RENDER_METAL            (Wanted: ON): ON
+2026-05-14T02:54:08.3976330Z --   SDL_RENDER_VULKAN           (Wanted: ON): ON
+2026-05-14T02:54:08.3976580Z --   SDL_ROCKCHIP                (Wanted: OFF): OFF
+2026-05-14T02:54:08.3976850Z --   SDL_RPATH                   (Wanted: ON): OFF
+2026-05-14T02:54:08.3977160Z --   SDL_RPI                     (Wanted: OFF): OFF
+2026-05-14T02:54:08.3977430Z --   SDL_SNDIO                   (Wanted: OFF): OFF
+2026-05-14T02:54:08.3977720Z --   SDL_SNDIO_SHARED            (Wanted: OFF): OFF
+2026-05-14T02:54:08.3978000Z --   SDL_SSE                     (Wanted: OFF): OFF
+2026-05-14T02:54:08.3978310Z --   SDL_SSE2                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3978600Z --   SDL_SSE3                    (Wanted: OFF): OFF
+2026-05-14T02:54:08.3978840Z --   SDL_SSE4_1                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3979160Z --   SDL_SSE4_2                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3979500Z --   SDL_SYSTEM_ICONV            (Wanted: OFF): OFF
+2026-05-14T02:54:08.3979800Z --   SDL_TESTS                   (Wanted: OFF): OFF
+2026-05-14T02:54:08.3980090Z --   SDL_TESTS_LINK_SHARED       (Wanted: OFF): OFF
+2026-05-14T02:54:08.3980780Z --   SDL_UNINSTALL               (Wanted: OFF): OFF
+2026-05-14T02:54:08.3983690Z --   SDL_VIRTUAL_JOYSTICK        (Wanted: ON): ON
+2026-05-14T02:54:08.3984020Z --   SDL_VIVANTE                 (Wanted: OFF): OFF
+2026-05-14T02:54:08.3984470Z --   SDL_VULKAN                  (Wanted: ON): ON
+2026-05-14T02:54:08.3984780Z --   SDL_WASAPI                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3985140Z --   SDL_WAYLAND                 (Wanted: OFF): OFF
+2026-05-14T02:54:08.3985520Z --   SDL_WAYLAND_LIBDECOR        (Wanted: OFF): OFF
+2026-05-14T02:54:08.3985880Z --   SDL_WAYLAND_LIBDECOR_SHARED (Wanted: OFF): OFF
+2026-05-14T02:54:08.3986190Z --   SDL_WAYLAND_SHARED          (Wanted: OFF): OFF
+2026-05-14T02:54:08.3986430Z --   SDL_X11                     (Wanted: OFF): OFF
+2026-05-14T02:54:08.3986700Z --   SDL_X11_SHARED              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3987130Z --   SDL_X11_XCURSOR             (Wanted: OFF): OFF
+2026-05-14T02:54:08.3987520Z --   SDL_X11_XDBE                (Wanted: OFF): OFF
+2026-05-14T02:54:08.3987800Z --   SDL_X11_XFIXES              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3988260Z --   SDL_X11_XINPUT              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3988540Z --   SDL_X11_XRANDR              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3988830Z --   SDL_X11_XSCRNSAVER          (Wanted: OFF): OFF
+2026-05-14T02:54:08.3989260Z --   SDL_X11_XSHAPE              (Wanted: OFF): OFF
+2026-05-14T02:54:08.3989530Z --   SDL_X11_XSYNC               (Wanted: OFF): OFF
+2026-05-14T02:54:08.3989840Z --   SDL_X11_XTEST               (Wanted: OFF): OFF
+2026-05-14T02:54:08.3990160Z --   SDL_XINPUT                  (Wanted: OFF): OFF
+2026-05-14T02:54:08.3990400Z -- 
+2026-05-14T02:54:08.3990610Z --  Build Shared Library: OFF
+2026-05-14T02:54:08.3990810Z --  Build Static Library: ON
+2026-05-14T02:54:08.3991090Z --  Build libraries as Apple Framework: OFF
+2026-05-14T02:54:08.3991310Z -- 
+2026-05-14T02:54:08.3991510Z -- If something was not detected, although the libraries
+2026-05-14T02:54:08.3991810Z -- were installed, then make sure you have set the
+2026-05-14T02:54:08.3992080Z -- CMAKE_C_FLAGS and CMAKE_PREFIX_PATH CMake variables correctly.
+2026-05-14T02:54:08.3992380Z -- 
+2026-05-14T02:54:08.4044990Z -- {fmt} version: 11.1.2
+2026-05-14T02:54:08.4045270Z -- Build type: 
+2026-05-14T02:54:08.4056510Z -- Performing Test HAS_NULLPTR_WARNING
+2026-05-14T02:54:09.9777240Z -- Performing Test HAS_NULLPTR_WARNING - Success
+2026-05-14T02:54:09.9823380Z -- Performing Test HAVE_BUILTIN_BSWAP16
+2026-05-14T02:54:11.5969040Z -- Performing Test HAVE_BUILTIN_BSWAP16 - Success
+2026-05-14T02:54:11.5970310Z -- Performing Test HAVE_BUILTIN_BSWAP32
+2026-05-14T02:54:12.9777290Z -- Performing Test HAVE_BUILTIN_BSWAP32 - Success
+2026-05-14T02:54:12.9878450Z -- Performing Test HAVE_BUILTIN_BSWAP64
+2026-05-14T02:54:14.5534530Z -- Performing Test HAVE_BUILTIN_BSWAP64 - Success
+2026-05-14T02:54:14.5556060Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-05-14T02:54:15.8717570Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-05-14T02:54:15.8737140Z -- Found Threads: TRUE
+2026-05-14T02:54:18.9357180Z -- Could NOT find OpenGL (missing: OPENGL_gl_LIBRARY OPENGL_INCLUDE_DIR) 
+2026-05-14T02:54:18.9359640Z -- Performing Test HAVE_MATH_LIBRARY
+2026-05-14T02:54:20.5545120Z -- Performing Test HAVE_MATH_LIBRARY - Success
+2026-05-14T02:54:20.5553940Z -- Looking for include file GLUT/glut.h
+2026-05-14T02:54:21.9270020Z -- Looking for include file GLUT/glut.h - not found
+2026-05-14T02:54:21.9272850Z -- Looking for include file GL/glut.h
+2026-05-14T02:54:23.2748900Z -- Looking for include file GL/glut.h - not found
+2026-05-14T02:54:23.2749370Z -- Looking for include file OpenGL/glut.h
+2026-05-14T02:54:24.6687130Z -- Looking for include file OpenGL/glut.h - not found
+2026-05-14T02:54:24.6687920Z -- Looking for include file shlwapi.h
+2026-05-14T02:54:26.0020300Z -- Looking for include file shlwapi.h - not found
+2026-05-14T02:54:26.0020750Z -- Looking for include file unistd.h
+2026-05-14T02:54:27.4114500Z -- Looking for include file unistd.h - found
+2026-05-14T02:54:27.4115150Z -- Looking for include file wincodec.h
+2026-05-14T02:54:28.6742300Z -- Looking for include file wincodec.h - not found
+2026-05-14T02:54:28.6742640Z -- Looking for include file windows.h
+2026-05-14T02:54:30.1586280Z -- Looking for include file windows.h - not found
+2026-05-14T02:54:30.1603520Z -- Performing Test WEBP_HAVE_FLAG_SSE41
+2026-05-14T02:54:31.4844110Z -- Performing Test WEBP_HAVE_FLAG_SSE41 - Failed
+2026-05-14T02:54:31.4844930Z -- Performing Test WEBP_HAVE_FLAG_SSE41
+2026-05-14T02:54:33.0371110Z -- Performing Test WEBP_HAVE_FLAG_SSE41 - Failed
+2026-05-14T02:54:33.0389190Z -- Performing Test HAS_COMPILE_FLAG
+2026-05-14T02:54:34.4392980Z -- Performing Test HAS_COMPILE_FLAG - Success
+2026-05-14T02:54:34.4396080Z -- Performing Test FLAG_-mno-sse4.1
+2026-05-14T02:54:35.8240860Z -- Performing Test FLAG_-mno-sse4.1 - Failed
+2026-05-14T02:54:35.8241610Z -- Performing Test WEBP_HAVE_FLAG_SSE2
+2026-05-14T02:54:37.1492630Z -- Performing Test WEBP_HAVE_FLAG_SSE2 - Failed
+2026-05-14T02:54:37.1493930Z -- Performing Test WEBP_HAVE_FLAG_SSE2
+2026-05-14T02:54:39.2097200Z -- Performing Test WEBP_HAVE_FLAG_SSE2 - Failed
+2026-05-14T02:54:39.2115500Z -- Performing Test HAS_COMPILE_FLAG
+2026-05-14T02:54:40.9880780Z -- Performing Test HAS_COMPILE_FLAG - Success
+2026-05-14T02:54:40.9884240Z -- Performing Test FLAG_-mno-sse2
+2026-05-14T02:54:42.4662310Z -- Performing Test FLAG_-mno-sse2 - Failed
+2026-05-14T02:54:42.4663070Z -- Performing Test WEBP_HAVE_FLAG_MIPS32
+2026-05-14T02:54:44.3990600Z -- Performing Test WEBP_HAVE_FLAG_MIPS32 - Failed
+2026-05-14T02:54:44.3990940Z -- Performing Test WEBP_HAVE_FLAG_MIPS32
+2026-05-14T02:54:45.9158850Z -- Performing Test WEBP_HAVE_FLAG_MIPS32 - Failed
+2026-05-14T02:54:45.9175600Z -- Performing Test WEBP_HAVE_FLAG_MIPS_DSP_R2
+2026-05-14T02:54:47.5165140Z -- Performing Test WEBP_HAVE_FLAG_MIPS_DSP_R2 - Failed
+2026-05-14T02:54:47.5166220Z -- Performing Test WEBP_HAVE_FLAG_MIPS_DSP_R2
+2026-05-14T02:54:49.0860630Z -- Performing Test WEBP_HAVE_FLAG_MIPS_DSP_R2 - Failed
+2026-05-14T02:54:49.0872470Z -- Performing Test HAS_COMPILE_FLAG
+2026-05-14T02:54:50.5261840Z -- Performing Test HAS_COMPILE_FLAG - Failed
+2026-05-14T02:54:50.5265320Z -- Performing Test WEBP_HAVE_FLAG_NEON
+2026-05-14T02:54:52.3953270Z -- Performing Test WEBP_HAVE_FLAG_NEON - Success
+2026-05-14T02:54:52.3963450Z -- Performing Test WEBP_HAVE_FLAG_MSA
+2026-05-14T02:54:53.8556530Z -- Performing Test WEBP_HAVE_FLAG_MSA - Failed
+2026-05-14T02:54:53.8557540Z -- Performing Test WEBP_HAVE_FLAG_MSA
+2026-05-14T02:54:55.5625480Z -- Performing Test WEBP_HAVE_FLAG_MSA - Failed
+2026-05-14T02:54:55.5637470Z -- Performing Test HAS_COMPILE_FLAG
+2026-05-14T02:54:57.0115190Z -- Performing Test HAS_COMPILE_FLAG - Failed
+2026-05-14T02:54:57.0701920Z -- The ASM compiler identification is AppleClang
+2026-05-14T02:54:57.0958520Z -- Found assembler: /Applications/Xcode_16.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+2026-05-14T02:54:57.1122580Z CMake Deprecation Warning at 3rdparty/libzip/CMakeLists.txt:1 (cmake_minimum_required):
+2026-05-14T02:54:57.1123400Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-05-14T02:54:57.1123780Z   CMake.
+2026-05-14T02:54:57.1123850Z 
+2026-05-14T02:54:57.1124080Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-05-14T02:54:57.1124590Z   to tell CMake that the project requires at least <min> but has been updated
+2026-05-14T02:54:57.1125010Z   to work with policies introduced by <max> or earlier.
+2026-05-14T02:54:57.1125180Z 
+2026-05-14T02:54:57.1125180Z 
+2026-05-14T02:54:57.1176060Z -- Looking for fts_open
+2026-05-14T02:54:58.5923990Z -- Looking for fts_open - found
+2026-05-14T02:54:58.5935530Z -- Looking for sys/types.h
+2026-05-14T02:54:59.9547520Z -- Looking for sys/types.h - found
+2026-05-14T02:54:59.9548040Z -- Looking for stdint.h
+2026-05-14T02:55:01.3806260Z -- Looking for stdint.h - found
+2026-05-14T02:55:01.3808270Z -- Looking for stddef.h
+2026-05-14T02:55:02.9893740Z -- Looking for stddef.h - found
+2026-05-14T02:55:02.9894100Z -- Check size of off_t
+2026-05-14T02:55:05.2681830Z -- Check size of off_t - done
+2026-05-14T02:55:05.2685200Z -- Check size of size_t
+2026-05-14T02:55:07.0266510Z -- Check size of size_t - done
+2026-05-14T02:55:07.0267380Z -- Performing Test HAVE_NULLABLE
+2026-05-14T02:55:08.8225170Z -- Performing Test HAVE_NULLABLE - Success
+2026-05-14T02:55:08.8290640Z CMake Deprecation Warning at 3rdparty/cpuinfo/CMakeLists.txt:1 (CMAKE_MINIMUM_REQUIRED):
+2026-05-14T02:55:08.8291360Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-05-14T02:55:08.8291740Z   CMake.
+2026-05-14T02:55:08.8291810Z 
+2026-05-14T02:55:08.8292010Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-05-14T02:55:08.8292550Z   to tell CMake that the project requires at least <min> but has been updated
+2026-05-14T02:55:08.8292930Z   to work with policies introduced by <max> or earlier.
+2026-05-14T02:55:08.8293160Z 
+2026-05-14T02:55:08.8293160Z 
+2026-05-14T02:55:08.8370310Z CMake Deprecation Warning at 3rdparty/freetype/CMakeLists.txt:113 (cmake_minimum_required):
+2026-05-14T02:55:08.8374610Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-05-14T02:55:08.8375040Z   CMake.
+2026-05-14T02:55:08.8375190Z 
+2026-05-14T02:55:08.8375410Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-05-14T02:55:08.8375850Z   to tell CMake that the project requires at least <min> but has been updated
+2026-05-14T02:55:08.8376250Z   to work with policies introduced by <max> or earlier.
+2026-05-14T02:55:08.8376470Z 
+2026-05-14T02:55:08.8376480Z 
+2026-05-14T02:55:09.0345110Z -- Found ZLIB: /Applications/Xcode_16.2.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk/usr/lib/libz.tbd (found version "1.2.12")
+2026-05-14T02:55:09.0346480Z -- Looking for fcntl.h
+2026-05-14T02:55:10.7346200Z -- Looking for fcntl.h - found
+2026-05-14T02:55:10.7488990Z WARNHarfBuzz has a Meson port and tries to migrate all the other build systems to it, please consider using it as we might remove our cmake port soon.
+2026-05-14T02:55:10.7489760Z CMake Warning (dev) at 3rdparty/harfbuzz/CMakeLists.txt:78 (include):
+2026-05-14T02:55:10.7490170Z   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+2026-05-14T02:55:10.7490640Z   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+2026-05-14T02:55:10.7491060Z   the cmake_policy command to set the policy and suppress this warning.
+2026-05-14T02:55:10.7491320Z 
+2026-05-14T02:55:10.7491940Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-05-14T02:55:10.7492200Z 
+2026-05-14T02:55:10.8377740Z -- Found PythonInterp: /Library/Frameworks/Python.framework/Versions/Current/bin/python (found version "3.14.4")
+2026-05-14T02:55:10.8394320Z -- Looking for atexit
+2026-05-14T02:55:12.6155240Z -- Looking for atexit - found
+2026-05-14T02:55:12.6156090Z -- Looking for mprotect
+2026-05-14T02:55:14.7978510Z -- Looking for mprotect - found
+2026-05-14T02:55:14.7979390Z -- Looking for mmap
+2026-05-14T02:55:16.7524680Z -- Looking for mmap - found
+2026-05-14T02:55:16.7525390Z -- Looking for isatty
+2026-05-14T02:55:18.3224260Z -- Looking for isatty - found
+2026-05-14T02:55:18.3225440Z -- Looking for sys/mman.h
+2026-05-14T02:55:20.0576390Z -- Looking for sys/mman.h - found
+2026-05-14T02:55:20.0577260Z -- Looking for stdbool.h
+2026-05-14T02:55:21.7870500Z -- Looking for stdbool.h - found
+2026-05-14T02:55:21.7971800Z -- Performing Test CXX_SUPPORTS_FLAG_BSYMB_FUNCS
+2026-05-14T02:55:23.2128880Z -- Performing Test CXX_SUPPORTS_FLAG_BSYMB_FUNCS - Success
+2026-05-14T02:55:23.2133010Z -- Performing Test COMPILER_SUPPORTS_CXX11
+2026-05-14T02:55:24.7494810Z -- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+2026-05-14T02:55:24.7868410Z -- Looking for include file AudioUnit/AudioUnit.h
+2026-05-14T02:55:26.6280290Z -- Looking for include file AudioUnit/AudioUnit.h - found
+2026-05-14T02:55:26.6354070Z -- Forcing _M_ARM64 for iOS
+2026-05-14T02:55:26.6354370Z -- DEBUG: _M_ARM64 is TRUE
+2026-05-14T02:55:26.6360350Z -- DEBUG: pcsx2arm64RecSources: x86/BaseblockEx.cpp;x86/iCOP0.cpp;x86/iCore.cpp;x86/iFPU.cpp;x86/iFPUd.cpp;x86/iMMI.cpp;x86/iR3000A.cpp;x86/iR3000Atables.cpp;x86/iR5900Analysis.cpp;x86/iR5900Misc.cpp;x86/ix86-32/iCore.cpp;x86/ix86-32/iR5900.cpp;x86/ix86-32/iR5900Arit.cpp;x86/ix86-32/iR5900AritImm.cpp;x86/ix86-32/iR5900Branch.cpp;x86/ix86-32/iR5900Jump.cpp;x86/ix86-32/iR5900LoadStore.cpp;x86/ix86-32/iR5900Move.cpp;x86/ix86-32/iR5900MultDiv.cpp;x86/ix86-32/iR5900Shift.cpp;x86/ix86-32/iR5900Templates.cpp;x86/ix86-32/recVTLB.cpp;x86/microVU.cpp
+2026-05-14T02:55:30.1216900Z -- The Swift compiler identification is Apple 6.0.3
+2026-05-14T02:55:30.2962960Z -- Check for working Swift compiler: /Applications/Xcode_16.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc
+2026-05-14T02:55:32.8960280Z -- Check for working Swift compiler: /Applications/Xcode_16.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc - works
+2026-05-14T02:55:32.9355980Z -- Found Metal Shaders: /Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/cas.metal;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/convert.metal;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/fxaa.metal;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/interlace.metal;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/merge.metal;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/misc.metal;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/present.metal;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/pcsx2/GS/Renderers/Metal/tfx.metal
+2026-05-14T02:55:32.9360840Z -- Found Fonts: /Users/runner/work/iPCSX2/iPCSX2/src/cpp/../assets/resources/fonts/Roboto-Regular.ttf;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/../assets/resources/fonts/RobotoMono-Medium.ttf;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/../assets/resources/fonts/fa-solid-900.ttf;/Users/runner/work/iPCSX2/iPCSX2/src/cpp/../assets/resources/fonts/promptfont.otf
+2026-05-14T02:55:32.9380070Z -- Configuring done (468.2s)
+2026-05-14T02:55:33.2728460Z -- Generating done (0.3s)
+2026-05-14T02:55:33.2735720Z -- Build files have been written to: /Users/runner/work/iPCSX2/iPCSX2/build
+2026-05-14T02:55:33.3081130Z ##[group]Run set -o pipefail
+2026-05-14T02:55:33.3081530Z [36;1mset -o pipefail[0m
+2026-05-14T02:55:33.3081790Z [36;1mxcodebuild \[0m
+2026-05-14T02:55:33.3082040Z [36;1m  -project "$GITHUB_WORKSPACE/build/iPSX2.xcodeproj" \[0m
+2026-05-14T02:55:33.3082350Z [36;1m  -scheme iPSX2 \[0m
+2026-05-14T02:55:33.3082550Z [36;1m  -configuration Release \[0m
+2026-05-14T02:55:33.3082860Z [36;1m  -sdk iphoneos \[0m
+2026-05-14T02:55:33.3083070Z [36;1m  -arch arm64 \[0m
+2026-05-14T02:55:33.3083260Z [36;1m  CODE_SIGNING_ALLOWED=NO \[0m
+2026-05-14T02:55:33.3083490Z [36;1m  CODE_SIGNING_REQUIRED=NO \[0m
+2026-05-14T02:55:33.3083760Z [36;1m  CODE_SIGN_IDENTITY="" \[0m
+2026-05-14T02:55:33.3083980Z [36;1m  DEVELOPMENT_TEAM="" \[0m
+2026-05-14T02:55:33.3084200Z [36;1m  PROVISIONING_PROFILE="" \[0m
+2026-05-14T02:55:33.3084500Z [36;1m  2>&1 | tee build.log[0m
+2026-05-14T02:55:33.3084910Z [36;1m# Résumé des erreurs de build dans le Summary public[0m
+2026-05-14T02:55:33.3085420Z [36;1mecho '## Build Output (errors)' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-14T02:55:33.3085760Z [36;1mecho '```' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-14T02:55:33.3086230Z [36;1mgrep -E '(error:|Error:|FAILED|BUILD FAILED)' build.log | tail -80 >> $GITHUB_STEP_SUMMARY || true[0m
+2026-05-14T02:55:33.3086680Z [36;1mecho '```' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-14T02:55:33.3086960Z [36;1m# Vérifier que le .app a bien été produit[0m
+2026-05-14T02:55:33.3087350Z [36;1mfind "$GITHUB_WORKSPACE/build" -name "iPSX2.app" -type d | head -3[0m
+2026-05-14T02:55:33.3375750Z shell: /bin/bash -e {0}
+2026-05-14T02:55:33.3376120Z ##[endgroup]
+2026-05-14T02:55:34.4593580Z Command line invocation:
+2026-05-14T02:55:34.4615370Z     /Applications/Xcode_16.2.app/Contents/Developer/usr/bin/xcodebuild -project /Users/runner/work/iPCSX2/iPCSX2/build/iPSX2.xcodeproj -scheme iPSX2 -configuration Release -sdk iphoneos -arch arm64 CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= DEVELOPMENT_TEAM= PROVISIONING_PROFILE=
+2026-05-14T02:55:34.4622880Z 
+2026-05-14T02:55:34.4622960Z User defaults from command line:
+2026-05-14T02:55:34.4623310Z     IDEPackageSupportUseBuiltinSCM = YES
+2026-05-14T02:55:34.4623450Z 
+2026-05-14T02:55:34.4623590Z Build settings from command line:
+2026-05-14T02:55:34.4623810Z     ARCHS = arm64
+2026-05-14T02:55:34.4624010Z     CODE_SIGN_IDENTITY = 
+2026-05-14T02:55:34.4624370Z     CODE_SIGNING_ALLOWED = NO
+2026-05-14T02:55:34.4624590Z     CODE_SIGNING_REQUIRED = NO
+2026-05-14T02:55:34.4624820Z     DEVELOPMENT_TEAM = 
+2026-05-14T02:55:34.4625140Z     PROVISIONING_PROFILE = 
+2026-05-14T02:55:34.4625360Z     SDKROOT = iphoneos18.2
+2026-05-14T02:55:34.4625460Z 
+2026-05-14T02:55:34.8663860Z 2026-05-14 02:55:34.865 xcodebuild[32141:74730] Writing error result bundle to /var/folders/tb/y368xp_x10s3ty1b_mtl5mxr0000gn/T/ResultBundle_2026-14-05_02-55-0034.xcresult
+2026-05-14T02:55:35.9714510Z xcodebuild: error: Found no destinations for the scheme 'iPSX2' and action build.
+2026-05-14T02:55:35.9844740Z ##[error]Process completed with exit code 70.
+2026-05-14T02:55:35.9949490Z ##[group]Run actions/upload-artifact@v4
+2026-05-14T02:55:35.9949770Z with:
+2026-05-14T02:55:35.9950020Z   name: build-logs-4dc37278c0eec6ac9a8d3aeceb1bb8f63e0dea66
+2026-05-14T02:55:35.9950440Z   path: build.log
+2026-05-14T02:55:35.9950770Z   retention-days: 7
+2026-05-14T02:55:35.9950970Z   if-no-files-found: warn
+2026-05-14T02:55:35.9951160Z   compression-level: 6
+2026-05-14T02:55:35.9951430Z   overwrite: false
+2026-05-14T02:55:35.9951700Z   include-hidden-files: false
+2026-05-14T02:55:35.9951940Z ##[endgroup]
+2026-05-14T02:55:36.7226220Z With the provided path, there will be 1 file uploaded
+2026-05-14T02:55:36.7226630Z Artifact name is valid!
+2026-05-14T02:55:36.7226810Z Root directory input is valid!
+2026-05-14T02:55:37.0792530Z Beginning upload of artifact content to blob storage
+2026-05-14T02:55:37.3819790Z Uploaded bytes 649
+2026-05-14T02:55:37.4600650Z Finished uploading artifact content to blob storage!
+2026-05-14T02:55:37.4615150Z SHA256 digest of uploaded artifact zip is 2d75d7645faabfeead8cf761862c7e35dd6076a556c8f0f2a88355a230c1f17c
+2026-05-14T02:55:37.4616800Z Finalizing artifact upload
+2026-05-14T02:55:37.6471670Z Artifact build-logs-4dc37278c0eec6ac9a8d3aeceb1bb8f63e0dea66.zip successfully finalized. Artifact ID 6986181345
+2026-05-14T02:55:37.6473220Z Artifact build-logs-4dc37278c0eec6ac9a8d3aeceb1bb8f63e0dea66 has been successfully uploaded! Final size is 649 bytes. Artifact ID is 6986181345
+2026-05-14T02:55:37.6488280Z Artifact download URL: https://github.com/st4rwhx/iPCSX2/actions/runs/25838669326/artifacts/6986181345
+2026-05-14T02:55:37.6638550Z Post job cleanup.
+2026-05-14T02:55:37.7760070Z [command]/opt/homebrew/bin/git version
+2026-05-14T02:55:37.7825770Z git version 2.54.0
+2026-05-14T02:55:37.7848960Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/9a3ffd5b-e70b-4138-9fe4-ad1e84e22f28/.gitconfig'
+2026-05-14T02:55:37.7856260Z Temporarily overriding HOME='/Users/runner/work/_temp/9a3ffd5b-e70b-4138-9fe4-ad1e84e22f28' before making global git config changes
+2026-05-14T02:55:37.7856870Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-14T02:55:37.7859710Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/iPCSX2/iPCSX2
+2026-05-14T02:55:37.7951680Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-14T02:55:37.8008660Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-14T02:55:37.9028760Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-14T02:55:37.9086730Z http.https://github.com/.extraheader
+2026-05-14T02:55:37.9096120Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-05-14T02:55:37.9391880Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-14T02:55:38.0323000Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-14T02:55:38.0390350Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-14T02:55:38.1324780Z Cleaning up orphan processes
+2026-05-14T02:55:39.8865140Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/cache@v4, actions/checkout@v4, actions/upload-artifact@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
