@@ -30,8 +30,13 @@ jobs:
         run: |
           set -euo pipefail
           xcodebuild -showsdks
-          IOS_SDK="$(xcodebuild -showsdks | awk '/iphoneos/ {print $NF}' | sort -V | tail -1)"
-          IOS_DEPLOYMENT_TARGET="$(printf '%s' "${IOS_SDK#iphoneos}" | awk -F. '{print $1 "." $2}')"
+          IOS_SDKS="$(xcodebuild -showsdks | awk '/iphoneos/ {print $NF}')"
+          if [[ -z "$IOS_SDKS" ]]; then
+            echo "::error::No iOS SDKs detected."
+            exit 1
+          fi
+          IOS_SDK="$(printf '%s\n' "$IOS_SDKS" | sort -V | tail -1)"
+          IOS_DEPLOYMENT_TARGET="${IOS_SDK#iphoneos}"
           echo "IOS_SDK=$IOS_SDK" >> "$GITHUB_ENV"
           echo "IOS_DEPLOYMENT_TARGET=$IOS_DEPLOYMENT_TARGET" >> "$GITHUB_ENV"
 
@@ -78,13 +83,13 @@ jobs:
             -scheme iPSX2 \
             -configuration Release \
             -sdk "$IOS_SDK" \
-            -destination 'generic/platform=iOS' \
             -derivedDataPath "$GITHUB_WORKSPACE/build/DerivedData" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             DEVELOPMENT_TEAM="" \
             PROVISIONING_PROFILE="" \
+            build \
             2>&1 | tee build.log
           # Résumé des erreurs de build dans le Summary public
           echo '## Build Output (errors)' >> $GITHUB_STEP_SUMMARY
