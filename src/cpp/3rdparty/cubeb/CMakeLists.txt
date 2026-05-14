@@ -134,7 +134,7 @@ if(USE_AUDIOUNIT)
     target_sources(cubeb PRIVATE src/cubeb_osx_run_loop.cpp)
   endif()
   target_compile_definitions(cubeb PRIVATE USE_AUDIOUNIT)
-  target_link_libraries(cubeb PRIVATE "-framework AudioUnit" "-framework CoreAudio" "-framework CoreServices")
+  target_link_libraries(cubeb PRIVATE "-framework AudioUnit" "-framework AudioToolbox" "-framework CoreAudio" "-framework CoreFoundation" "-framework CoreServices")
 endif()
 endif()
 

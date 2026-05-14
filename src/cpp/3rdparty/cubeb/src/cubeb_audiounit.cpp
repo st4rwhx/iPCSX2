@@ -9,6 +9,7 @@
 #include <AudioUnit/AudioUnit.h>
 #include <TargetConditionals.h>
 #include <assert.h>
+#include <dispatch/dispatch.h>
 #include <mach/mach_time.h>
 #include <pthread.h>
 #include <stdlib.h>
@@ -267,10 +268,12 @@ struct cubeb_stream {
   /* This is true if a device change callback is currently running.  */
   atomic<bool> switching_device{false};
   atomic<bool> buffer_size_change_state{false};
+#if !TARGET_OS_IPHONE
   AudioDeviceID aggregate_device_id =
       kAudioObjectUnknown; // the aggregate device id
   AudioObjectID plugin_id =
       kAudioObjectUnknown; // used to create aggregate device
+#endif
   /* Mixer interface */
   unique_ptr<cubeb_mixer, decltype(&cubeb_mixer_destroy)> mixer;
   /* Buffer where remixing/resampling will occur when upmixing is required */
@@ -1622,7 +1625,7 @@ audiounit_set_channel_layout(AudioUnit unit, io_side side,
 
   r = AudioUnitSetProperty(unit, kAudioUnitProperty_AudioChannelLayout,
                            kAudioUnitScope_Input, AU_OUT_BUS, au_layout.get(),
-                           size);
+                           static_cast<UInt32>(size));
   if (r != noErr) {
     LOG("AudioUnitSetProperty/%s/kAudioUnitProperty_AudioChannelLayout rv=%d",
         to_string(side), r);
@@ -1646,6 +1649,7 @@ audiounit_layout_init(cubeb_stream * stm, io_side side)
                                stm->context->layout);
 }
 
+#if !TARGET_OS_IPHONE
 static vector<AudioObjectID>
 audiounit_get_sub_devices(AudioDeviceID device_id)
 {
@@ -2089,6 +2093,7 @@ audiounit_destroy_aggregate_device(AudioObjectID plugin_id,
   *aggregate_device_id = kAudioObjectUnknown;
   return CUBEB_OK;
 }
+#endif
 
 static int
 audiounit_new_unit_instance(AudioUnit * unit, device_info * device)
@@ -2645,6 +2650,7 @@ audiounit_setup_stream(cubeb_stream * stm)
   device_info in_dev_info = stm->input_device;
   device_info out_dev_info = stm->output_device;
 
+#if !TARGET_OS_IPHONE
   if (has_input(stm) && has_output(stm) &&
       stm->input_device.id != stm->output_device.id) {
     r = audiounit_create_aggregate_device(stm);
@@ -2662,6 +2668,7 @@ audiounit_setup_stream(cubeb_stream * stm)
       out_dev_info.flags = DEV_OUTPUT;
     }
   }
+#endif
 
   if (has_input(stm)) {
     r = audiounit_create_unit(&stm->input_unit, &in_dev_info);
@@ -2945,11 +2952,13 @@ audiounit_close_stream(cubeb_stream * stm)
   stm->resampler.reset();
   stm->mixer.reset();
 
+#if !TARGET_OS_IPHONE
   if (stm->aggregate_device_id != kAudioObjectUnknown) {
     audiounit_destroy_aggregate_device(stm->plugin_id,
                                        &stm->aggregate_device_id);
     stm->aggregate_device_id = kAudioObjectUnknown;
   }
+#endif
 }
 
 static void
