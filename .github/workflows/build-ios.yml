@@ -68,6 +68,8 @@ jobs:
             -configuration Release \
             -sdk iphoneos \
             -arch arm64 \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath "$GITHUB_WORKSPACE/build/DerivedData" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
@@ -80,12 +82,12 @@ jobs:
           grep -E '(error:|Error:|FAILED|BUILD FAILED)' build.log | tail -80 >> $GITHUB_STEP_SUMMARY || true
           echo '```' >> $GITHUB_STEP_SUMMARY
           # Vérifier que le .app a bien été produit
-          find "$GITHUB_WORKSPACE/build" -name "iPSX2.app" -type d | head -3
+          find "$GITHUB_WORKSPACE/build/DerivedData" -name "iPSX2.app" -type d | head -3
 
       # ── 7. Packager en .ipa ─────────────────────────────────────────────────
       - name: Package IPA
         run: |
-          APP=$(find "$GITHUB_WORKSPACE/build" -name "iPSX2.app" -type d | head -1)
+          APP=$(find "$GITHUB_WORKSPACE/build/DerivedData" -name "iPSX2.app" -type d | head -1)
           echo "App trouvée : $APP"
           mkdir -p "$GITHUB_WORKSPACE/Payload"
           cp -r "$APP" "$GITHUB_WORKSPACE/Payload/iPSX2.app"
