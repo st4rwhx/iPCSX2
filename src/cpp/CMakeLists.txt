@@ -33,8 +33,7 @@ set(IPSX2_BUILD_NUMBER 2)
 # Project Name
 project(iPSX2 VERSION ${IPSX2_VERSION} LANGUAGES C CXX)
 
-# Set C++17 standard globally
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Code signing setup
