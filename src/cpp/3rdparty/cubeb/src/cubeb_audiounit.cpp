@@ -110,6 +110,13 @@ enum device_flags {
       0x08, /* User selected to use the system default device */
 };
 
+enum class io_side;
+
+#if TARGET_OS_IPHONE
+typedef uintptr_t AudioDeviceID;
+typedef uintptr_t AudioObjectID;
+#endif
+
 void
 audiounit_stream_stop_internal(cubeb_stream * stm);
 static int
@@ -124,11 +131,13 @@ static int
 audiounit_install_device_changed_callback(cubeb_stream * stm);
 static int
 audiounit_install_system_changed_callback(cubeb_stream * stm);
+#if !TARGET_OS_IPHONE
 static vector<AudioObjectID>
 audiounit_get_devices_of_type(cubeb_device_type devtype);
 static UInt32
 audiounit_get_device_presentation_latency(AudioObjectID devid,
                                           AudioObjectPropertyScope scope);
+#endif
 
 #if !TARGET_OS_IPHONE
 static AudioObjectID
@@ -407,11 +416,7 @@ is_common_sample_rate(Float64 sample_rate)
 }
 
 #if TARGET_OS_IPHONE
-typedef uintptr_t AudioDeviceID;
-typedef uintptr_t AudioObjectID;
-
 #define AudioGetCurrentHostTime mach_absolute_time
-
 #endif
 
 uint64_t
