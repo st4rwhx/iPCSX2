@@ -9,15 +9,15 @@ on:
 jobs:
   build:
     name: Build iPSX2 (iOS arm64)
-    runs-on: macos-15          # Apple Silicon M2 — Xcode 16, Swift 6 ✓
-    timeout-minutes: 90        # Sécurité : 1h30 max
+    runs-on: macos-15 # Apple Silicon M2 — Xcode 16, Swift 6 ✓
+    timeout-minutes: 90 # Sécurité : 1h30 max
 
     steps:
       # ── 1. Checkout ────────────────────────────────────────────────────────
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1       # Pas besoin de tout l'historique git
+          fetch-depth: 1 # Pas besoin de tout l'historique git
 
       # ── 2. Sélectionner Xcode 16 (Swift 6 requis) ──────────────────────────
       - name: Select Xcode 16
@@ -48,6 +48,7 @@ jobs:
             -DiPSX2_REAL_DEVICE=ON \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCMAKE_OSX_DEPLOYMENT_TARGET=18.0 \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             "$GITHUB_WORKSPACE/src/cpp"
 
       # ── 6. Compiler avec xcodebuild ─────────────────────────────────────────
@@ -85,7 +86,7 @@ jobs:
         with:
           name: iPSX2-${{ github.sha }}
           path: iPSX2.ipa
-          retention-days: 14    # Dispo 2 semaines
+          retention-days: 14 # Dispo 2 semaines
 
       # ── 9. Upload les logs si la build échoue ──────────────────────────────
       - name: Upload build logs (si erreur)

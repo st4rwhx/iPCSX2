@@ -129,17 +129,14 @@ add_subdirectory("${THIRDDEP}/ccc" ccc EXCLUDE_FROM_ALL)
 # ── demangler ────────────────────────────────────────────────────────────────
 add_subdirectory("${THIRDDEP}/demangler" demangler EXCLUDE_FROM_ALL)
 
-# ── glslang (needed for SPV shader compilation, Metal path uses it minimally) ─
-set(GLSLANG_TESTS           OFF CACHE BOOL "" FORCE)
-set(GLSLANG_ENABLE_INSTALL  OFF CACHE BOOL "" FORCE)
-set(BUILD_EXTERNAL          OFF CACHE BOOL "" FORCE)
-set(ENABLE_GLSLANG_BINARIES OFF CACHE BOOL "" FORCE)
-set(ENABLE_HLSL             OFF CACHE BOOL "" FORCE)
-set(ENABLE_OPT              OFF CACHE BOOL "" FORCE)
-add_subdirectory("${THIRDDEP}/glslang/glslang" glslang EXCLUDE_FROM_ALL)
+# ── glslang — SKIPPED for iOS ───────────────────────────────────────────────
+# Metal uses .metal shaders compiled by Xcode. No GLSL/SPIRV needed.
+# glslang CMakeLists.txt uses cmake_minimum_required(VERSION 2.8.x)
+# which CMake 4.x rejects with a hard error. Headers still accessible
+# via include_directories set in the top-level CMakeLists.txt.
 
-# ── vulkan-headers (interface only, no Vulkan runtime on iOS) ─────────────────
-add_subdirectory("${THIRDDEP}/vulkan" vulkan EXCLUDE_FROM_ALL)
+# ── vulkan — SKIPPED for iOS ─────────────────────────────────────────────────
+# Vulkan is not available on iOS. Metal is the GPU API.
 
 # NOTE: discord-rpc, d3d12memalloc, libadrenotools, oboe, winpixeventruntime,
-# winwil, xbyak, zydis are desktop/Android/Windows-only and skipped for iOS.
+# winwil, xbyak, zydis, glslang, vulkan are skipped for iOS.
