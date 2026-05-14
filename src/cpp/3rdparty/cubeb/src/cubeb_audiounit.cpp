@@ -9,15 +9,16 @@
 #include <AudioUnit/AudioUnit.h>
 #include <TargetConditionals.h>
 #include <assert.h>
+#include <cstdint>
 #include <dispatch/dispatch.h>
 #include <mach/mach_time.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <CoreFoundation/CoreFoundation.h>
 #if !TARGET_OS_IPHONE
 #include <AvailabilityMacros.h>
 #include <CoreAudio/AudioHardware.h>
 #include <CoreAudio/HostTime.h>
-#include <CoreFoundation/CoreFoundation.h>
 #endif
 #include "cubeb-internal.h"
 #include "cubeb/cubeb.h"
@@ -191,7 +192,11 @@ to_string(io_side side)
 }
 
 struct device_info {
+#if TARGET_OS_IPHONE
+  AudioDeviceID id = 0;
+#else
   AudioDeviceID id = kAudioObjectUnknown;
+#endif
   device_flags_value flags = DEV_UNKNOWN;
 };
 
@@ -402,8 +407,8 @@ is_common_sample_rate(Float64 sample_rate)
 }
 
 #if TARGET_OS_IPHONE
-typedef UInt32 AudioDeviceID;
-typedef UInt32 AudioObjectID;
+typedef uintptr_t AudioDeviceID;
+typedef uintptr_t AudioObjectID;
 
 #define AudioGetCurrentHostTime mach_absolute_time
 
@@ -1432,6 +1437,7 @@ audiounit_convert_channel_layout(AudioChannelLayout * layout)
   return cl;
 }
 
+#if !TARGET_OS_IPHONE
 static cubeb_channel_layout
 audiounit_get_preferred_channel_layout(AudioUnit output_unit)
 {
@@ -1460,6 +1466,7 @@ audiounit_get_preferred_channel_layout(AudioUnit output_unit)
 
   return audiounit_convert_channel_layout(layout.get());
 }
+#endif
 
 static cubeb_channel_layout
 audiounit_get_current_channel_layout(AudioUnit output_unit)
@@ -1473,7 +1480,11 @@ audiounit_get_current_channel_layout(AudioUnit output_unit)
     LOG("AudioUnitGetPropertyInfo/kAudioUnitProperty_AudioChannelLayout rv=%d",
         rv);
     // This property isn't known before macOS 10.12, attempt another method.
+#if !TARGET_OS_IPHONE
     return audiounit_get_preferred_channel_layout(output_unit);
+#else
+    return CUBEB_LAYOUT_UNDEFINED;
+#endif
   }
   assert(size > 0);
 
@@ -3149,6 +3160,7 @@ convert_uint32_into_string(UInt32 data)
   return str;
 }
 
+#if !TARGET_OS_IPHONE
 int
 audiounit_get_default_device_datasource(cubeb_device_type type, UInt32 * data)
 {
@@ -3170,12 +3182,19 @@ audiounit_get_default_device_datasource(cubeb_device_type type, UInt32 * data)
 
   return CUBEB_OK;
 }
+#endif
 
 int
 audiounit_get_default_device_name(cubeb_stream * stm,
                                   cubeb_device * const device,
                                   cubeb_device_type type)
 {
+#if TARGET_OS_IPHONE
+  (void)stm;
+  (void)device;
+  (void)type;
+  return CUBEB_ERROR_NOT_SUPPORTED;
+#else
   assert(stm);
   assert(device);
 
@@ -3192,6 +3211,7 @@ audiounit_get_default_device_name(cubeb_stream * stm,
         type == CUBEB_DEVICE_TYPE_INPUT ? "input" : "output");
   }
   return CUBEB_OK;
+#endif
 }
 
 int
