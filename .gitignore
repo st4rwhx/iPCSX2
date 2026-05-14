@@ -1,0 +1,35 @@
+# Build artifacts
+build/
+*.ipa
+Payload/
+*.o
+*.d
+
+# macOS metadata
+.DS_Store
+__MACOSX/
+
+# Xcode
+*.xcworkspace
+xcuserdata/
+DerivedData/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Logs
+*.log
+
+# Prebuilt static libs (Android-only, pas nécessaires pour iOS)
+# Commente ces lignes si tu as besoin d'eux pour Android
+src/cpp/3rdparty/libs/libshaderc.a
+src/cpp/3rdparty/libs/libssl.a
+src/cpp/3rdparty/libs/libcrypto.a
+src/cpp/3rdparty/libs/libcurl.a
+src/cpp/3rdparty/libs/libnghttp2.a
+src/cpp/3rdparty/libs/libpcap.a
+src/cpp/3rdparty/libs/libjpeg.a
+src/cpp/3rdparty/libs/libpng16.a

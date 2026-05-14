@@ -1,0 +1,97 @@
+name: Build iPSX2 iOS
+
+# Déclenche sur chaque push sur main, ou manuellement depuis l'onglet Actions
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build iPSX2 (iOS arm64)
+    runs-on: macos-15          # Apple Silicon M2 — Xcode 16, Swift 6 ✓
+    timeout-minutes: 90        # Sécurité : 1h30 max
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1       # Pas besoin de tout l'historique git
+
+      # ── 2. Sélectionner Xcode 16 (Swift 6 requis) ──────────────────────────
+      - name: Select Xcode 16
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.2.app
+          xcodebuild -version
+          swift --version
+
+      # ── 3. Installer cmake et ninja ─────────────────────────────────────────
+      - name: Install cmake & ninja
+        run: brew install cmake ninja
+
+      # ── 4. Cache cmake build directory ─────────────────────────────────────
+      - name: Cache cmake build
+        uses: actions/cache@v4
+        with:
+          path: build
+          key: cmake-ios-${{ hashFiles('src/cpp/CMakeLists.txt', 'src/cpp/common/CMakeLists.txt', 'src/cpp/pcsx2/CMakeLists.txt', 'cmake/**') }}
+          restore-keys: cmake-ios-
+
+      # ── 5. Configurer cmake → génère iPSX2.xcodeproj ───────────────────────
+      - name: CMake configure
+        run: |
+          cmake \
+            -B "$GITHUB_WORKSPACE/build" \
+            -G Xcode \
+            -DCMAKE_SYSTEM_NAME=iOS \
+            -DiPSX2_REAL_DEVICE=ON \
+            -DCMAKE_OSX_ARCHITECTURES=arm64 \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=18.0 \
+            "$GITHUB_WORKSPACE/src/cpp"
+
+      # ── 6. Compiler avec xcodebuild ─────────────────────────────────────────
+      - name: Build (xcodebuild)
+        run: |
+          xcodebuild \
+            -project "$GITHUB_WORKSPACE/build/iPSX2.xcodeproj" \
+            -scheme iPSX2 \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination "generic/platform=iOS" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" \
+            PROVISIONING_PROFILE="" \
+            2>&1 | tee build.log
+          # Vérifier que le .app a bien été produit
+          find "$GITHUB_WORKSPACE/build" -name "iPSX2.app" -type d | head -3
+
+      # ── 7. Packager en .ipa ─────────────────────────────────────────────────
+      - name: Package IPA
+        run: |
+          APP=$(find "$GITHUB_WORKSPACE/build" -name "iPSX2.app" -type d | head -1)
+          echo "App trouvée : $APP"
+          mkdir -p "$GITHUB_WORKSPACE/Payload"
+          cp -r "$APP" "$GITHUB_WORKSPACE/Payload/iPSX2.app"
+          cd "$GITHUB_WORKSPACE"
+          zip -r iPSX2.ipa Payload/
+          ls -lh iPSX2.ipa
+
+      # ── 8. Upload l'IPA comme artifact téléchargeable ──────────────────────
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iPSX2-${{ github.sha }}
+          path: iPSX2.ipa
+          retention-days: 14    # Dispo 2 semaines
+
+      # ── 9. Upload les logs si la build échoue ──────────────────────────────
+      - name: Upload build logs (si erreur)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ github.sha }}
+          path: build.log
+          retention-days: 7
