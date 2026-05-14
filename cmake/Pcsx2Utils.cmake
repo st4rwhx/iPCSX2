@@ -84,3 +84,11 @@ endmacro()
 function(pcsx2_target_compile_options target)
     target_compile_options(${target} PRIVATE ${ARGN})
 endfunction()
+
+# source_groups_from_vcxproj_filters — reads a .vcxproj.filters file and
+# creates source_group() entries for IDE organization.
+# For iOS/Xcode builds this is purely cosmetic — no-op.
+function(source_groups_from_vcxproj_filters filters_file)
+    # No-op for iOS: Xcode organizes files by filesystem structure automatically.
+    # On Windows/MSVC this would parse the XML and call source_group() for each filter.
+endfunction()
