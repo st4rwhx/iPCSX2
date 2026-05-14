@@ -131,6 +131,12 @@ static int
 audiounit_install_device_changed_callback(cubeb_stream * stm);
 static int
 audiounit_install_system_changed_callback(cubeb_stream * stm);
+static int
+audiounit_uninstall_device_changed_callback(cubeb_stream * stm);
+static int
+audiounit_uninstall_system_changed_callback(cubeb_stream * stm);
+static void
+audiounit_reinit_stream_async(cubeb_stream * stm, device_flags_value flags);
 #if !TARGET_OS_IPHONE
 static vector<AudioObjectID>
 audiounit_get_devices_of_type(cubeb_device_type devtype);
@@ -138,17 +144,8 @@ static UInt32
 audiounit_get_device_presentation_latency(AudioObjectID devid,
                                           AudioObjectPropertyScope scope);
 #endif
-
-#if !TARGET_OS_IPHONE
 static AudioObjectID
 audiounit_get_default_device_id(cubeb_device_type type);
-static int
-audiounit_uninstall_device_changed_callback(cubeb_stream * stm);
-static int
-audiounit_uninstall_system_changed_callback(cubeb_stream * stm);
-static void
-audiounit_reinit_stream_async(cubeb_stream * stm, device_flags_value flags);
-#endif
 
 extern cubeb_ops const audiounit_ops;
 
@@ -1288,6 +1285,25 @@ audiounit_install_system_changed_callback(cubeb_stream * /* stm */)
 {
   return CUBEB_OK;
 }
+
+static int
+audiounit_uninstall_device_changed_callback(cubeb_stream * /* stm */)
+{
+  return CUBEB_OK;
+}
+
+static int
+audiounit_uninstall_system_changed_callback(cubeb_stream * /* stm */)
+{
+  return CUBEB_OK;
+}
+
+static void
+audiounit_reinit_stream_async(cubeb_stream * /* stm */,
+                              device_flags_value /* flags */)
+{
+  return;
+}
 #endif
 
 static AudioObjectID
@@ -2243,6 +2259,14 @@ audiounit_init_input_linear_buffer(cubeb_stream * stream, uint32_t capacity)
   return CUBEB_OK;
 }
 
+#if TARGET_OS_IPHONE
+static uint32_t
+audiounit_clamp_latency(cubeb_stream * /* stm */, uint32_t latency_frames)
+{
+  return max(min<uint32_t>(latency_frames, SAFE_MAX_LATENCY_FRAMES),
+             SAFE_MIN_LATENCY_FRAMES);
+}
+#else
 static uint32_t
 audiounit_clamp_latency(cubeb_stream * stm, uint32_t latency_frames)
 {
@@ -2307,6 +2331,7 @@ audiounit_clamp_latency(cubeb_stream * stm, uint32_t latency_frames)
   return max(min<uint32_t>(latency_frames, upper_latency_limit),
              SAFE_MIN_LATENCY_FRAMES);
 }
+#endif
 
 /*
  * Change buffer size is prone to deadlock thus we change it
@@ -2316,6 +2341,7 @@ audiounit_clamp_latency(cubeb_stream * stm, uint32_t latency_frames)
  * - wait until the listener is executed
  * - property has changed, remove the listener
  * */
+#if !TARGET_OS_IPHONE
 static void
 buffer_size_changed_callback(void * inClientData, AudioUnit inUnit,
                              AudioUnitPropertyID inPropertyID,
@@ -2451,6 +2477,24 @@ audiounit_set_buffer_size(cubeb_stream * stm, uint32_t new_size_frames,
       new_size_frames);
   return CUBEB_OK;
 }
+#else
+static void
+buffer_size_changed_callback(void * /* inClientData */, AudioUnit /* inUnit */,
+                             AudioUnitPropertyID /* inPropertyID */,
+                             AudioUnitScope /* inScope */,
+                             AudioUnitElement /* inElement */)
+{
+  return;
+}
+
+static int
+audiounit_set_buffer_size(cubeb_stream * /* stm */,
+                          uint32_t /* new_size_frames */,
+                          io_side /* side */)
+{
+  return CUBEB_OK;
+}
+#endif
 
 static int
 audiounit_configure_input(cubeb_stream * stm)
